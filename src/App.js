@@ -15,10 +15,6 @@ class App extends React.Component {
   }
   
   async componentDidMount() {
-<<<<<<< HEAD
-    const response = await axios(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita`);
-    const data = response.data;
-=======
     const margResponse = await axios('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita');
     const manhattanResponse = await axios('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=manhattan');
     const ginResponse = await axios('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=gin_and_tonic')
@@ -29,7 +25,6 @@ class App extends React.Component {
     const ginData = ginResponse.data;
     const mojitoData = mojitoResponse.data;
     const martiniData = martiniResponse.data;
->>>>>>> f1e18c6937be283a3b05864364cfdcc9eb52d97b
     this.setState({
         margarita: {
           name: margData.drinks[0].strDrink,
