@@ -27,8 +27,10 @@ class App extends React.Component {
     const martiniData = martiniResponse.data;
     this.setState({
         margarita: {
-          name: margData.drinks[0].strDrink
-
+          name: margData.drinks[0].strDrink,
+          alcoholic: margData.drinks[0].strAlcoholic,
+          glass: margData.drinks[0].strGlass,
+          instructions: margData.drinks[0].strInstructions
         },
         manhattan: {
           name: manhattanData.drinks[0].strDrink
@@ -49,7 +51,17 @@ class App extends React.Component {
   return (
     <div className="container">
       <h1>Test Header</h1>
-      <h2>{this.state.margarita.name}</h2>
+      <div class='margarita'>
+        <h2>{this.state.margarita.name}</h2>
+        <h3>{this.state.margarita.alcoholic}</h3>
+        <h3>{this.state.margarita.glass}</h3>
+        <h3>{this.state.margarita.instructions}</h3>
+      </div>
+
+
+
+
+
       <h2>{this.state.manhattan.name}</h2>
       <h2>{this.state.gin_and_tonic.name}</h2>
       <h2>{this.state.mojito.name}</h2>
