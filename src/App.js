@@ -11,7 +11,7 @@ class App extends React.Component {
     }
   }
   async componentDidMount() {
-    const response = await axios('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita');
+    const response = await axios(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita`);
     const data = response.data;
     this.setState({
         name: data.drinks[0].strDrink
