@@ -13,26 +13,7 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    const margResponse = await axios(
-      'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita'
-    );
-    const manhattanResponse = await axios(
-      'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=manhattan'
-    );
-    const ginResponse = await axios(
-      'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=gin_and_tonic'
-    );
-    const mojitoResponse = await axios(
-      'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito'
-    );
-    const martiniResponse = await axios(
-      'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini'
-    );
-    const margData = margResponse.data;
-    const manhattanData = manhattanResponse.data;
-    const ginData = ginResponse.data;
-    const mojitoData = mojitoResponse.data;
-    const martiniData = martiniResponse.data;
+    
     this.setState({
      
     });
