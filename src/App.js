@@ -69,8 +69,62 @@ class App extends React.Component {
     //   //   ]
     //   // }
     //   // ,
-      
-    //     margarita: 
+
+  })
+
+  render() {
+    return (
+      <div className='container'>
+        <h1>Test Header</h1>
+        <div className='margarita'>
+          <h2>{this.state.margarita.name}</h2>
+          <h3>{this.state.margarita.alcoholic}</h3>
+          <h3>{this.state.margarita.glass}</h3>
+          <h3>{this.state.margarita.instructions}</h3>
+          <h3>ingredients: {this.state.margarita.ingredients}</h3>
+        </div>
+
+        <div className='manhattan'>
+          <h2>{this.state.manhattan.name}</h2>
+          <h3>{this.state.manhattan.alcoholic}</h3>
+          <h3>{this.state.manhattan.glass}</h3>
+          <h3>{this.state.manhattan.instructions}</h3>
+          <h3> ingredients: {this.state.manhattan.ingredients}</h3>
+        </div>
+
+        <div className='gin_and_tonic'>
+          <h2>{this.state.gin_and_tonic.name}</h2>
+          <h3>{this.state.gin_and_tonic.alcoholic}</h3>
+          <h3>{this.state.gin_and_tonic.glass}</h3>
+          <h3>{this.state.gin_and_tonic.instructions}</h3>
+          <h3> ingredients: {this.state.gin_and_tonic.ingredients}</h3>
+        </div>
+
+        <div className='mojito'>
+          <h2>{this.state.mojito.name}</h2>
+          <h3>{this.state.mojito.alcoholic}</h3>
+          <h3>{this.state.mojito.glass}</h3>
+          <h3>{this.state.mojito.instructions}</h3>
+          <h3>ingredients: {this.state.mojito.ingredients}</h3>
+        </div>
+
+        <div className='martini'>
+          <h2>{this.state.martini.name}</h2>
+          <h3>{this.state.martini.alcoholic}</h3>
+          <h3>{this.state.martini.glass}</h3>
+          <h3>{this.state.martini.instructions}</h3>
+          <h3>ingredients: {this.state.martini.ingredients}</h3>
+        </div>
+      </div>
+    );
+  }
+
+
+export default App;
+
+
+
+//     margarita: 
     //     {
     //     name: margData.drinks[0].strDrink,
     //     alcoholic: margData.drinks[0].strAlcoholic,
@@ -190,54 +244,3 @@ class App extends React.Component {
     //     ]
     // }
     // });
-  })
-
-  render() {
-    return (
-      <div className='container'>
-        <h1>Test Header</h1>
-        <div className='margarita'>
-          <h2>{this.state.fav.margarita.name}</h2>
-          <h3>{this.state.fav.margarita.alcoholic}</h3>
-          <h3>{this.state.fav.margarita.glass}</h3>
-          <h3>{this.state.fav.margarita.instructions}</h3>
-          <h3>ingredients: {this.state.fav.margarita.ingredients}</h3>
-        </div>
-
-        <div className='manhattan'>
-          <h2>{this.state.fav.manhattan.name}</h2>
-          <h3>{this.state.fav.manhattan.alcoholic}</h3>
-          <h3>{this.state.fav.manhattan.glass}</h3>
-          <h3>{this.state.fav.manhattan.instructions}</h3>
-          <h3> ingredients: {this.state.fav.manhattan.ingredients}</h3>
-        </div>
-
-        <div className='gin_and_tonic'>
-          <h2>{this.state.fav.gin_and_tonic.name}</h2>
-          <h3>{this.state.fav.gin_and_tonic.alcoholic}</h3>
-          <h3>{this.state.fav.gin_and_tonic.glass}</h3>
-          <h3>{this.state.fav.gin_and_tonic.instructions}</h3>
-          <h3> ingredients: {this.state.fav.gin_and_tonic.ingredients}</h3>
-        </div>
-
-        <div className='mojito'>
-          <h2>{this.state.fav.mojito.name}</h2>
-          <h3>{this.state.fav.mojito.alcoholic}</h3>
-          <h3>{this.state.fav.mojito.glass}</h3>
-          <h3>{this.state.fav.mojito.instructions}</h3>
-          <h3>ingredients: {this.state.fav.mojito.ingredients}</h3>
-        </div>
-
-        <div className='martini'>
-          <h2>{this.state.fav.martini.name}</h2>
-          <h3>{this.state.fav.martini.alcoholic}</h3>
-          <h3>{this.state.fav.martini.glass}</h3>
-          <h3>{this.state.fav.martini.instructions}</h3>
-          <h3>ingredients: {this.state.fav.martini.ingredients}</h3>
-        </div>
-      </div>
-    );
-  }
-}
-
-export default App;
