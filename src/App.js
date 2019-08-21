@@ -6,11 +6,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      margarita: {},
-      manhattan: {},
-      gin_and_tonic: {},
-      mojito: {},
-      martini: {}
+      cocktails: [],
+      cocktails: {},
+     
     };
   }
 
@@ -36,121 +34,7 @@ class App extends React.Component {
     const mojitoData = mojitoResponse.data;
     const martiniData = martiniResponse.data;
     this.setState({
-      margarita: {
-        name: margData.drinks[0].strDrink,
-        alcoholic: margData.drinks[0].strAlcoholic,
-        glass: margData.drinks[0].strGlass,
-        instructions: margData.drinks[0].strInstructions,
-        ingredients: [
-          margData.drinks[0].strIngredient1,
-          margData.drinks[0].strIngredient2,
-          margData.drinks[0].strIngredient3,
-          margData.drinks[0].strIngredient4,
-          margData.drinks[0].strIngredient5,
-          margData.drinks[0].strIngredient6,
-          margData.drinks[0].strIngredient7,
-          margData.drinks[0].strIngredient8,
-          margData.drinks[0].strIngredient9,
-          margData.drinks[0].strIngredient10,
-          margData.drinks[0].strIngredient11,
-          margData.drinks[0].strIngredient12,
-          margData.drinks[0].strIngredient13,
-          margData.drinks[0].strIngredient14,
-          margData.drinks[0].strIngredient15
-        ]
-      },
-      manhattan: {
-        name: manhattanData.drinks[0].strDrink,
-        alcoholic: manhattanData.drinks[0].strAlcoholic,
-        glass: manhattanData.drinks[0].strGlass,
-        instructions: manhattanData.drinks[0].strInstructions,
-        ingredients: [
-          manhattanData.drinks[0].strIngredient1,
-          manhattanData.drinks[0].strIngredient2,
-          manhattanData.drinks[0].strIngredient3,
-          manhattanData.drinks[0].strIngredient4,
-          manhattanData.drinks[0].strIngredient5,
-          manhattanData.drinks[0].strIngredient6,
-          manhattanData.drinks[0].strIngredient7,
-          manhattanData.drinks[0].strIngredient8,
-          manhattanData.drinks[0].strIngredient9,
-          manhattanData.drinks[0].strIngredient10,
-          manhattanData.drinks[0].strIngredient11,
-          manhattanData.drinks[0].strIngredient12,
-          manhattanData.drinks[0].strIngredient13,
-          manhattanData.drinks[0].strIngredient14,
-          manhattanData.drinks[0].strIngredient15
-        ]
-      },
-      gin_and_tonic: {
-        name: ginData.drinks[0].strDrink,
-        alcoholic: ginData.drinks[0].strAlcoholic,
-        glass: ginData.drinks[0].strGlass,
-        instructions: ginData.drinks[0].strInstructions,
-        ingredients: [
-          ginData.drinks[0].strIngredient1,
-          ginData.drinks[0].strIngredient2,
-          ginData.drinks[0].strIngredient3,
-          ginData.drinks[0].strIngredient4,
-          ginData.drinks[0].strIngredient5,
-          ginData.drinks[0].strIngredient6,
-          ginData.drinks[0].strIngredient7,
-          ginData.drinks[0].strIngredient8,
-          ginData.drinks[0].strIngredient9,
-          ginData.drinks[0].strIngredient10,
-          ginData.drinks[0].strIngredient11,
-          ginData.drinks[0].strIngredient12,
-          ginData.drinks[0].strIngredient13,
-          ginData.drinks[0].strIngredient14,
-          ginData.drinks[0].strIngredient15
-        ]
-      },
-      mojito: {
-        name: mojitoData.drinks[0].strDrink,
-        alcoholic: mojitoData.drinks[0].strAlcoholic,
-        glass: mojitoData.drinks[0].strGlass,
-        instructions: mojitoData.drinks[0].strInstructions,
-        ingredients: [
-          mojitoData.drinks[0].strIngredient1,
-          mojitoData.drinks[0].strIngredient2,
-          mojitoData.drinks[0].strIngredient3,
-          mojitoData.drinks[0].strIngredient4,
-          mojitoData.drinks[0].strIngredient5,
-          mojitoData.drinks[0].strIngredient6,
-          mojitoData.drinks[0].strIngredient7,
-          mojitoData.drinks[0].strIngredient8,
-          mojitoData.drinks[0].strIngredient9,
-          mojitoData.drinks[0].strIngredient10,
-          mojitoData.drinks[0].strIngredient11,
-          mojitoData.drinks[0].strIngredient12,
-          mojitoData.drinks[0].strIngredient13,
-          mojitoData.drinks[0].strIngredient14,
-          mojitoData.drinks[0].strIngredient15
-        ]
-      },
-      martini: {
-        name: martiniData.drinks[0].strDrink,
-        alcoholic: martiniData.drinks[0].strAlcoholic,
-        glass: martiniData.drinks[0].strGlass,
-        instructions: martiniData.drinks[0].strInstructions,
-        ingredients: [
-          martiniData.drinks[0].strIngredient1,
-          martiniData.drinks[0].strIngredient2,
-          martiniData.drinks[0].strIngredient3,
-          martiniData.drinks[0].strIngredient4,
-          martiniData.drinks[0].strIngredient5,
-          martiniData.drinks[0].strIngredient6,
-          martiniData.drinks[0].strIngredient7,
-          martiniData.drinks[0].strIngredient8,
-          martiniData.drinks[0].strIngredient9,
-          martiniData.drinks[0].strIngredient10,
-          martiniData.drinks[0].strIngredient11,
-          martiniData.drinks[0].strIngredient12,
-          martiniData.drinks[0].strIngredient13,
-          martiniData.drinks[0].strIngredient14,
-          martiniData.drinks[0].strIngredient15
-        ]
-      }
+     
     });
   }
 
