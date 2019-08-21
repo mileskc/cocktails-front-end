@@ -1,70 +1,60 @@
 import React from 'react';
-import axios from 'axios';
+import axios from 'axios'
 import './App.css';
+
+let baseURL = process.env.REACT_APP_BASEURL
+
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:3003'
+}
 
 class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      cocktails: [],
-      cocktails: {},
-     
-    };
+     cocktails: [],
+     cocktail: {}
+    }
+    this.getCocktails = this.getCocktails.bind(this)
+    // this.getCocktail = this.getCocktail.bind(this)
+  }
+  
+  componentDidMount() {
+    this.getCocktails()
   }
 
-  async componentDidMount() {
+  async getCocktails(){
+    const response = await axios.get(`${baseURL}/cocktails`)
+    const cocktails = response.data
     
-    this.setState({
-     
-    });
+    this.setState({ cocktails: cocktails })
   }
+
+  // getCocktail(cocktail) {
+  //   this.setState({ 
+  //     cocktail: cocktail ,
+  //   })
+  // }
 
   render() {
-    return (
-      <div className='container'>
-        <h1>Test Header</h1>
-        <div className='margarita'>
-          <h2>{this.state.margarita.name}</h2>
-          <h3>{this.state.margarita.alcoholic}</h3>
-          <h3>{this.state.margarita.glass}</h3>
-          <h3>{this.state.margarita.instructions}</h3>
-          <h3>ingredients: {this.state.margarita.ingredients}</h3>
-        </div>
-
-        <div className='manhattan'>
-          <h2>{this.state.manhattan.name}</h2>
-          <h3>{this.state.manhattan.alcoholic}</h3>
-          <h3>{this.state.manhattan.glass}</h3>
-          <h3>{this.state.manhattan.instructions}</h3>
-          <h3> ingredients: {this.state.manhattan.ingredients}</h3>
-        </div>
-
-        <div className='gin_and_tonic'>
-          <h2>{this.state.gin_and_tonic.name}</h2>
-          <h3>{this.state.gin_and_tonic.alcoholic}</h3>
-          <h3>{this.state.gin_and_tonic.glass}</h3>
-          <h3>{this.state.gin_and_tonic.instructions}</h3>
-          <h3> ingredients: {this.state.gin_and_tonic.ingredients}</h3>
-        </div>
-
-        <div className='mojito'>
-          <h2>{this.state.mojito.name}</h2>
-          <h3>{this.state.mojito.alcoholic}</h3>
-          <h3>{this.state.mojito.glass}</h3>
-          <h3>{this.state.mojito.instructions}</h3>
-          <h3>ingredients: {this.state.mojito.ingredients}</h3>
-        </div>
-
-        <div className='martini'>
-          <h2>{this.state.martini.name}</h2>
-          <h3>{this.state.martini.alcoholic}</h3>
-          <h3>{this.state.martini.glass}</h3>
-          <h3>{this.state.martini.instructions}</h3>
-          <h3>ingredients: {this.state.martini.ingredients}</h3>
-        </div>
+  return (
+    <div className="container">
+      <h1>Test Header</h1>
+      <div className="info">
+      { 
+            this.state.cocktails.map(cocktail => {
+              return (
+                <div>
+                  <h2> {cocktail.name} </h2>
+                  <h3>X</h3>
+                </div>
+              )
+            })
+          }
       </div>
-    );
-  }
+    </div>
+  );
+}
 }
 
 export default App;
