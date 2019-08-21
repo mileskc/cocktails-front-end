@@ -13,10 +13,13 @@ class App extends React.Component {
     super(props)
     this.state = {
      cocktails: [],
+     isCocktailSet: false, 
      cocktail: {}
     }
+    
     this.getCocktails = this.getCocktails.bind(this)
-    // this.getCocktail = this.getCocktail.bind(this)
+    this.deleteCocktail = this.deleteCocktail.bind(this)
+    this.getCocktail = this.getCocktail.bind(this)
   }
   
   componentDidMount() {
@@ -30,11 +33,23 @@ class App extends React.Component {
     this.setState({ cocktails: cocktails })
   }
 
-  // getCocktail(cocktail) {
-  //   this.setState({ 
-  //     cocktail: cocktail ,
-  //   })
-  // }
+  getCocktail(cocktail) {
+    this.setState({ 
+      cocktail: cocktail ,
+      isCocktailSet: true 
+    })
+  }
+
+  async deleteCocktail(id) {
+    await axios.delete(`${baseURL}/cocktails/${id}`)
+    const filteredCocktails = this.state.cocktails.filter((cocktail) => {
+      return cocktail._id !== id
+    })
+  
+    this.setState({
+      cocktails: filteredCocktails
+    })
+  }
 
   render() {
   return (
@@ -46,7 +61,7 @@ class App extends React.Component {
               return (
                 <div>
                   <h2> {cocktail.name} </h2>
-                  <h3>X</h3>
+                  <h3 onClick={()=>this.deleteCocktail(cocktail._id)}>X</h3>
                 </div>
               )
             })
