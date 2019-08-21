@@ -40,19 +40,70 @@ class App extends React.Component {
         name: margData.drinks[0].strDrink,
         alcoholic: margData.drinks[0].strAlcoholic,
         glass: margData.drinks[0].strGlass,
-        instructions: margData.drinks[0].strInstructions
+        instructions: margData.drinks[0].strInstructions,
+        ingredients: [
+          margData.drinks[0].strIngredient1,
+          margData.drinks[0].strIngredient2,
+          margData.drinks[0].strIngredient3,
+          margData.drinks[0].strIngredient4,
+          margData.drinks[0].strIngredient5,
+          margData.drinks[0].strIngredient6,
+          margData.drinks[0].strIngredient7,
+          margData.drinks[0].strIngredient8,
+          margData.drinks[0].strIngredient9,
+          margData.drinks[0].strIngredient10,
+          margData.drinks[0].strIngredient11,
+          margData.drinks[0].strIngredient12,
+          margData.drinks[0].strIngredient13,
+          margData.drinks[0].strIngredient14,
+          margData.drinks[0].strIngredient15
+        ]
       },
       manhattan: {
         name: manhattanData.drinks[0].strDrink,
         alcoholic: manhattanData.drinks[0].strAlcoholic,
         glass: manhattanData.drinks[0].strGlass,
-        instructions: manhattanData.drinks[0].strInstructions
+        instructions: manhattanData.drinks[0].strInstructions,
+        ingredients: [
+          manhattanData.drinks[0].strIngredient1,
+          manhattanData.drinks[0].strIngredient2,
+          manhattanData.drinks[0].strIngredient3,
+          manhattanData.drinks[0].strIngredient4,
+          manhattanData.drinks[0].strIngredient5,
+          manhattanData.drinks[0].strIngredient6,
+          manhattanData.drinks[0].strIngredient7,
+          manhattanData.drinks[0].strIngredient8,
+          manhattanData.drinks[0].strIngredient9,
+          manhattanData.drinks[0].strIngredient10,
+          manhattanData.drinks[0].strIngredient11,
+          manhattanData.drinks[0].strIngredient12,
+          manhattanData.drinks[0].strIngredient13,
+          manhattanData.drinks[0].strIngredient14,
+          manhattanData.drinks[0].strIngredient15
+        ]
       },
       gin_and_tonic: {
         name: ginData.drinks[0].strDrink,
         alcoholic: ginData.drinks[0].strAlcoholic,
         glass: ginData.drinks[0].strGlass,
-        instructions: ginData.drinks[0].strInstructions
+        instructions: ginData.drinks[0].strInstructions,
+        ingredients: [
+          ginData.drinks[0].strIngredient1,
+          ginData.drinks[0].strIngredient2,
+          ginData.drinks[0].strIngredient3,
+          ginData.drinks[0].strIngredient4,
+          ginData.drinks[0].strIngredient5,
+          ginData.drinks[0].strIngredient6,
+          ginData.drinks[0].strIngredient7,
+          ginData.drinks[0].strIngredient8,
+          ginData.drinks[0].strIngredient9,
+          ginData.drinks[0].strIngredient10,
+          ginData.drinks[0].strIngredient11,
+          ginData.drinks[0].strIngredient12,
+          ginData.drinks[0].strIngredient13,
+          ginData.drinks[0].strIngredient14,
+          ginData.drinks[0].strIngredient15
+        ]
       },
       mojito: {
         name: mojitoData.drinks[0].strDrink,
@@ -112,6 +163,7 @@ class App extends React.Component {
           <h3>{this.state.margarita.alcoholic}</h3>
           <h3>{this.state.margarita.glass}</h3>
           <h3>{this.state.margarita.instructions}</h3>
+          <h3>ingredients: {this.state.margarita.ingredients}</h3>
         </div>
 
         <div className='manhattan'>
@@ -119,6 +171,7 @@ class App extends React.Component {
           <h3>{this.state.manhattan.alcoholic}</h3>
           <h3>{this.state.manhattan.glass}</h3>
           <h3>{this.state.manhattan.instructions}</h3>
+          <h3> ingredients: {this.state.manhattan.ingredients}</h3>
         </div>
 
         <div className='gin_and_tonic'>
@@ -126,6 +179,7 @@ class App extends React.Component {
           <h3>{this.state.gin_and_tonic.alcoholic}</h3>
           <h3>{this.state.gin_and_tonic.glass}</h3>
           <h3>{this.state.gin_and_tonic.instructions}</h3>
+          <h3> ingredients: {this.state.gin_and_tonic.ingredients}</h3>
         </div>
 
         <div className='mojito'>
@@ -133,7 +187,7 @@ class App extends React.Component {
           <h3>{this.state.mojito.alcoholic}</h3>
           <h3>{this.state.mojito.glass}</h3>
           <h3>{this.state.mojito.instructions}</h3>
-          <h3>{this.state.mojito.ingredients}</h3>
+          <h3>ingredients: {this.state.mojito.ingredients}</h3>
         </div>
 
         <div className='martini'>
@@ -141,7 +195,7 @@ class App extends React.Component {
           <h3>{this.state.martini.alcoholic}</h3>
           <h3>{this.state.martini.glass}</h3>
           <h3>{this.state.martini.instructions}</h3>
-          <h3>{this.state.martini.ingredients}</h3>
+          <h3>ingredients: {this.state.martini.ingredients}</h3>
         </div>
       </div>
     );
