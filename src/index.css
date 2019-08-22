@@ -42,12 +42,28 @@ header {
   font-size: 40px;
 }
 
-.info {
+.card {
   display: flex;
   flex-wrap: wrap;
+  width: 400px;
+  margin: 5px;
+}
+
+.col {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row {
+  display: flex;
 }
 
 .drink {
   margin: 50px;
   font-size: 20px;
 }
+
+button {
+  width: 100%;
+}
+

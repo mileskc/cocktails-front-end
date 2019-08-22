@@ -4,6 +4,7 @@ import './App.css';
 import NewForm from './components/NewForm';
 import Show from './components/Show';
 
+
 let baseURL = process.env.REACT_APP_BASEURL
 
 if (process.env.NODE_ENV === 'development') {
@@ -116,18 +117,28 @@ class App extends React.Component {
       handleAddCocktail={this.handleAddCocktail}
       />
       <button onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</button>
-      <div className="info">
+      <div class="row">
+      <div class="col s12 m7">
+      <div class="card">
       { 
             this.state.cocktails.map(cocktail => {
               return (
                 <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
-                  <h2> {cocktail.name} </h2>
+                  <div class="card-image">
                   <img src={cocktail.img}/>
+                  </div>
+                  <div class="card-content">
+                  <h2> {cocktail.name} </h2>
+                  </div>
+                  <div class="card-action">
                   <h3 onClick={()=>this.deleteCocktail(cocktail._id)}>X</h3>
+                  </div>
                 </div>
               )
             })
           }
+      </div>
+      </div>
       </div>
       {this.state.isCocktailSet && <Show getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
     </div>
