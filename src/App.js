@@ -54,12 +54,14 @@ class App extends React.Component {
   render() {
   return (
     <div className="container">
-      <h1>Test Header</h1>
+      <header>
+        <h1>Cocktails!</h1>
+      </header>
       <div className="info">
       { 
             this.state.cocktails.map(cocktail => {
               return (
-                <div>
+                <div className = "drink">
                   <h2> {cocktail.name} </h2>
                   <h3 onClick={()=>this.deleteCocktail(cocktail._id)}>X</h3>
                 </div>
