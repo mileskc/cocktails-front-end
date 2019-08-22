@@ -96,7 +96,7 @@ class App extends React.Component {
             })
           }
       </div>
-      {this.state.isCocktailSet && <Show revealFavorite={this.revealFavorite}cocktail ={this.state.cocktail}/>}
+      {this.state.isCocktailSet && <Show display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
     </div>
   );
 }
