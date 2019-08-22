@@ -143,6 +143,7 @@ class App extends React.Component {
                 >
                   
                   <h2> {cocktail.name} </h2>
+                  <img src={cocktail.img}/>
                   <h3 onClick={()=>this.deleteCocktail(cocktail._id)}>X</h3>
                 </div>
               )

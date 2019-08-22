@@ -14,6 +14,7 @@ if(process.env.NODE_ENV === 'development') {
             super(props);
             this.state = {
                 name: '',
+                img: '',
                 alcoholic: '', 
                 glass: '',
                 ingredients: [],
@@ -30,6 +31,7 @@ if(process.env.NODE_ENV === 'development') {
             event.preventDefault();
             const response = await axios.post(`${baseURL}/cocktails`, {
                 name: this.state.name,
+                img: this.state.img,
                 alcoholic: this.state.alcoholic,
                 glass: this.state.glass,
                 ingredients: this.state.ingredients,
@@ -48,12 +50,19 @@ if(process.env.NODE_ENV === 'development') {
                     value={this.state.name}
                     placeholder='name of drink'
                     />
+                     <input 
+                    type='text'
+                    id='img'
+                    onChange={this.handleChange}
+                    value={this.state.img}
+                    placeholder='enter image url'
+                    />
                     <input 
                     type='text'
                     id='alcoholic'
                     onChange={this.handleChange}
                     value={this.state.alcoholic}
-                    placeholder='is this alcoholic?'
+                    placeholder='alcoholic or non alcoholic?'
                     />
                     <input 
                     type='text'

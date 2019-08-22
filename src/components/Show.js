@@ -7,6 +7,7 @@ class Show extends React.Component {
                 <h3>Cocktail Info</h3>
                 <hr/>
                 <h4> {this.props.cocktail.name}</h4>
+                <img src={this.props.cocktail.img}/>
                 <button onClick={() => this.props.revealFavorite()}>Make Favorite</button>
                 {/* <h6 className={this.props.display}>*Favorite*</h6> */}
                 <h6 className={this.props.display}>{this.props.cocktail.favorite ? 'favorite' : 'not favorite'}</h6>
