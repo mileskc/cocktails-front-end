@@ -14,6 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+     display: 'hideFavorite',
      cocktails: [],
      isCocktailSet: false, 
      cocktail: {}
@@ -23,6 +24,7 @@ class App extends React.Component {
     this.deleteCocktail = this.deleteCocktail.bind(this)
     this.getCocktail = this.getCocktail.bind(this)
     this.handleAddCocktail = this.handleAddCocktail.bind(this);
+    this.revealFavorite = this.revealFavorite.bind(this);
   }
   
   componentDidMount() {
@@ -39,8 +41,21 @@ class App extends React.Component {
   getCocktail(cocktail) {
     this.setState({ 
       cocktail: cocktail ,
-      isCocktailSet: true 
+      isCocktailSet: true, 
+      display: 'hideFavorite'
     })
+  }
+
+  revealFavorite() {
+    if (this.state.display === 'showFavorite') {
+      this.setState({
+        display: 'hideFavorite'
+      })
+    } else if (this.state.display === 'hideFavorite') {
+      this.setState({
+        display: 'showFavorite'
+      })
+    }
   }
 
   handleAddCocktail(cocktail) {
@@ -81,7 +96,7 @@ class App extends React.Component {
             })
           }
       </div>
-      {this.state.isCocktailSet && <Show cocktail ={this.state.cocktail}/>}
+      {this.state.isCocktailSet && <Show revealFavorite={this.revealFavorite}cocktail ={this.state.cocktail}/>}
     </div>
   );
 }
