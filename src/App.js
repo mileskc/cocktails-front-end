@@ -25,6 +25,7 @@ class App extends React.Component {
     this.getCocktail = this.getCocktail.bind(this)
     this.handleAddCocktail = this.handleAddCocktail.bind(this);
     this.revealFavorite = this.revealFavorite.bind(this);
+    this.toggleFavorite = this.toggleFavorite.bind(this)
   }
   
   componentDidMount() {
@@ -43,6 +44,20 @@ class App extends React.Component {
       cocktail: cocktail ,
       isCocktailSet: true, 
       display: 'hideFavorite'
+    })
+  }
+
+  toggleFavorite(selectedCocktail) {
+    const updatedCocktail = this.state.cocktails.map(cocktail =>{
+      if (cocktail._id === selectedCocktail._id) {
+        cocktail.favorite = !cocktail.favorite;
+        return cocktail;
+      } else {
+        return cocktail;
+      }
+    })
+    this.setState({
+      cocktails: updatedCocktail
     })
   }
 
