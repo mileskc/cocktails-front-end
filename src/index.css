@@ -26,6 +26,7 @@ display: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  flex-direction: row;
 }
 
 header {
@@ -44,18 +45,17 @@ header {
 
 .card {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  width: 400px;
-  margin: 5px;
+  width: 300px;
+  height: 470px;
 }
 
-.col {
+.col.s12.m6.l4 {
   display: flex;
   flex-wrap: wrap;
-}
-
-.row {
-  display: flex;
+  flex-direction: row;
+  /* width: 400px; */
 }
 
 .drink {
@@ -67,3 +67,10 @@ button {
   width: 100%;
 }
 
+.card-image {
+  width: 200px;
+}
+
+h2 {
+  font-size: 30px;
+}
