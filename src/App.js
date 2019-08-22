@@ -137,11 +137,11 @@ class App extends React.Component {
       { 
             this.state.cocktails.map(cocktail => {
               return (
-                <div key={cocktail._id} onClick={()=>this.toggleFavorite(cocktail)} onClick={()=> this.getCocktail(cocktail)} className = "drink"
-                className={cocktail.favorite ? 'cocktail' : null}
+                <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink"
+                
 
                 >
-                  
+                  <div  onClick={()=>this.toggleFavorite(cocktail)} className={cocktail.favorite ? 'cocktail' : null}></div>
                   <h2> {cocktail.name} </h2>
                   <img src={cocktail.img}/>
                   <h3 onClick={()=>this.deleteCocktail(cocktail._id)}>X</h3>
