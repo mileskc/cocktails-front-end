@@ -17,7 +17,8 @@ class App extends React.Component {
      display: 'hideFavorite',
      cocktails: [],
      isCocktailSet: false, 
-     cocktail: {}
+     cocktail: {},
+     favorite: ''
     }
     
     this.getCocktails = this.getCocktails.bind(this)
@@ -25,11 +26,8 @@ class App extends React.Component {
     this.getCocktail = this.getCocktail.bind(this)
     this.handleAddCocktail = this.handleAddCocktail.bind(this);
     this.revealFavorite = this.revealFavorite.bind(this);
-<<<<<<< HEAD
     this.toggleFavorite = this.toggleFavorite.bind(this)
-=======
     this.getRandomCocktail = this.getRandomCocktail.bind(this)
->>>>>>> 0802c722a4affe4887b7e982a8f2c604ac37c51d
   }
   
   componentDidMount() {
@@ -81,7 +79,8 @@ class App extends React.Component {
     })
   }
 
-  toggleFavorite(selectedCocktail) {
+  async toggleFavorite(selectedCocktail) {
+    await axios.put(`${baseURL}/cocktails/${selectedCocktail._id}`, { favorite: !selectedCocktail.favorite })
     const updatedCocktail = this.state.cocktails.map(cocktail =>{
       if (cocktail._id === selectedCocktail._id) {
         cocktail.favorite = !cocktail.favorite;
@@ -138,7 +137,11 @@ class App extends React.Component {
       { 
             this.state.cocktails.map(cocktail => {
               return (
-                <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
+                <div key={cocktail._id} onClick={()=>this.toggleFavorite(cocktail)} onClick={()=> this.getCocktail(cocktail)} className = "drink"
+                className={cocktail.favorite ? 'cocktail' : null}
+
+                >
+                  
                   <h2> {cocktail.name} </h2>
                   <h3 onClick={()=>this.deleteCocktail(cocktail._id)}>X</h3>
                 </div>
