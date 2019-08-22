@@ -9,6 +9,7 @@ class Show extends React.Component {
                 <h4> {this.props.cocktail.name}</h4>
                 <button onClick={() => this.props.revealFavorite()}>Make Favorite</button>
                 <h6 className={this.props.display}>*Favorite*</h6>
+                {this.props.display ? ''}
                 <h5>{this.props.cocktail.alcoholic}</h5>
                 <h5>{this.props.cocktail.glass}</h5>
                 <h5>{this.props.cocktail.ingredients}</h5>
