@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios'
 import './App.css';
 import NewForm from './components/NewForm';
+import Show from './components/Show';
 
 let baseURL = process.env.REACT_APP_BASEURL
 
@@ -72,7 +73,7 @@ class App extends React.Component {
       { 
             this.state.cocktails.map(cocktail => {
               return (
-                <div className = "drink">
+                <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
                   <h2> {cocktail.name} </h2>
                   <h3 onClick={()=>this.deleteCocktail(cocktail._id)}>X</h3>
                 </div>
@@ -80,6 +81,7 @@ class App extends React.Component {
             })
           }
       </div>
+      {this.state.isCocktailSet && <Show cocktail ={this.state.cocktail}/>}
     </div>
   );
 }

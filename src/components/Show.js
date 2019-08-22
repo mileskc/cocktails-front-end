@@ -7,8 +7,14 @@ class Show extends React.Component {
                 <h3>Cocktail Info</h3>
                 <hr/>
                 <h4> {this.props.cocktail.name}</h4>
+                <h5>{this.props.cocktail.alcoholic}</h5>
+                <h5>{this.props.cocktail.glass}</h5>
+                <h5>{this.props.cocktail.ingredients}</h5>
+                <h5>{this.props.cocktail.instructions}</h5>
             </div>
             
         )
     }
 }
+
+export default Show;

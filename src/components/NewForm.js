@@ -16,7 +16,7 @@ if(process.env.NODE_ENV === 'development') {
                 name: '',
                 alcoholic: '', 
                 glass: '',
-                ingredients: '',
+                ingredients: [],
                 instructions: ''
             }
             this.handleChange = this.handleChange.bind(this);
