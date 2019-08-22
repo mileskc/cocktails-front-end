@@ -25,7 +25,10 @@ class App extends React.Component {
     this.getCocktail = this.getCocktail.bind(this)
     this.handleAddCocktail = this.handleAddCocktail.bind(this);
     this.revealFavorite = this.revealFavorite.bind(this);
+<<<<<<< HEAD
     this.getRandomCocktail = this.getRandomCocktail.bind(this)
+=======
+>>>>>>> 6b7f35367b57fdc6b783571a3725c55e0877a8e8
     this.toggleFavorite = this.toggleFavorite.bind(this)
   }
   
