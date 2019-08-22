@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import './App.css';
+import NewForm from './components/NewForm';
 
 let baseURL = process.env.REACT_APP_BASEURL
 
@@ -20,6 +21,7 @@ class App extends React.Component {
     this.getCocktails = this.getCocktails.bind(this)
     this.deleteCocktail = this.deleteCocktail.bind(this)
     this.getCocktail = this.getCocktail.bind(this)
+    this.handleAddCocktail = this.handleAddCocktail.bind(this);
   }
   
   componentDidMount() {
@@ -40,6 +42,12 @@ class App extends React.Component {
     })
   }
 
+  handleAddCocktail(cocktail) {
+    this.setState({
+      cocktails: [...this.state.cocktails, cocktail]
+    })
+  }
+
   async deleteCocktail(id) {
     await axios.delete(`${baseURL}/cocktails/${id}`)
     const filteredCocktails = this.state.cocktails.filter((cocktail) => {
@@ -55,6 +63,9 @@ class App extends React.Component {
   return (
     <div className="container">
       <h1>Test Header</h1>
+      <NewForm 
+      handleAddCocktail={this.handleAddCocktail}
+      />
       <div className="info">
       { 
             this.state.cocktails.map(cocktail => {
