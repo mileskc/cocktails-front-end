@@ -122,7 +122,7 @@ class App extends React.Component {
               return (
                 <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
                   <h2> {cocktail.name} </h2>
-                  <img src = {cocktail.img}/>
+                  <img src={cocktail.img}/>
                   <h3 onClick={()=>this.deleteCocktail(cocktail._id)}>X</h3>
                 </div>
               )
