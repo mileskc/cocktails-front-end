@@ -1,102 +1,135 @@
 import React from 'react';
 import axios from 'axios'
 import './App.css';
+import NewForm from './components/NewForm';
+import Show from './components/Show';
+
+let baseURL = process.env.REACT_APP_BASEURL
+
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:3003'
+}
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      margarita: {},
-      manhattan: {},
-      gin_and_tonic: {},
-      mojito: {},
-      martini: {}
+     display: 'hideFavorite',
+     cocktails: [],
+     isCocktailSet: false, 
+     cocktail: {}
     }
+    
+    this.getCocktails = this.getCocktails.bind(this)
+    this.deleteCocktail = this.deleteCocktail.bind(this)
+    this.getCocktail = this.getCocktail.bind(this)
+    this.handleAddCocktail = this.handleAddCocktail.bind(this);
+    this.revealFavorite = this.revealFavorite.bind(this);
+    this.getRandomCocktail = this.getRandomCocktail.bind(this)
   }
   
-  async componentDidMount() {
-    const margResponse = await axios('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita');
-    const manhattanResponse = await axios('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=manhattan');
-    const ginResponse = await axios('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=gin_and_tonic')
-    const mojitoResponse = await axios('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito');
-    const martiniResponse = await axios('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini');
-    const margData = margResponse.data;
-    const manhattanData = manhattanResponse.data;
-    const ginData = ginResponse.data;
-    const mojitoData = mojitoResponse.data;
-    const martiniData = martiniResponse.data;
+  componentDidMount() {
+    this.getCocktails()
+  }
+
+  async getCocktails(){
+    const response = await axios.get(`${baseURL}/cocktails`)
+    const cocktails = response.data
+    
+    this.setState({ cocktails: cocktails })
+  }
+
+  async getRandomCocktail(){
+    const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+    const data = response.data
     this.setState({
-        margarita: {
-          name: margData.drinks[0].strDrink,
-          alcoholic: margData.drinks[0].strAlcoholic,
-          glass: margData.drinks[0].strGlass,
-          instructions: margData.drinks[0].strInstructions
-        },
-        manhattan: {
-          name: manhattanData.drinks[0].strDrink,
-          alcoholic: manhattanData.drinks[0].strAlcoholic,
-          glass: manhattanData.drinks[0].strGlass,
-          instructions: manhattanData.drinks[0].strInstructions
-        },
-        gin_and_tonic: {
-          name: ginData.drinks[0].strDrink,
-          alcoholic: ginData.drinks[0].strAlcoholic,
-          glass: ginData.drinks[0].strGlass,
-          instructions: ginData.drinks[0].strInstructions
-        },
-        mojito: {
-          name: mojitoData.drinks[0].strDrink,
-          alcoholic: mojitoData.drinks[0].strAlcoholic,
-          glass: mojitoData.drinks[0].strGlass,
-          instructions: mojitoData.drinks[0].strInstructions
-        },
-        martini: {
-          name: martiniData.drinks[0].strDrink,
-          alcoholic: martiniData.drinks[0].strAlcoholic,
-          glass: martiniData.drinks[0].strGlass,
-          instructions: martiniData.drinks[0].strInstructions
-        }
+      cocktail: {
+        name: data.drinks[0].strDrink,
+        img: data.drinks[0].strDrinkThumb,
+        alcoholic: data.drinks[0].strAlcoholic,
+        glass: data.drinks[0].strGlass,
+        ingredients: [data.drinks[0].strIngredient1,
+        data.drinks[0].strIngredient2,
+        data.drinks[0].strIngredient3,
+        data.drinks[0].strIngredient4,
+        data.drinks[0].strIngredient5,
+        data.drinks[0].strIngredient6,
+        data.drinks[0].strIngredient7,
+        data.drinks[0].strIngredient8,
+        data.drinks[0].strIngredient9,
+        data.drinks[0].strIngredient10,
+        data.drinks[0].strIngredient11,
+        data.drinks[0].strIngredient12,
+        data.drinks[0].strIngredient13,
+        data.drinks[0].strIngredient14,
+        data.drinks[0].strIngredient15],
+        instructions: data.drinks[0].strInstructions
+      },
+      isCocktailSet: true
+    })
+  }
+
+  getCocktail(cocktail) {
+    this.setState({ 
+      cocktail: cocktail ,
+      isCocktailSet: true, 
+      display: 'hideFavorite'
+    })
+  }
+
+  revealFavorite() {
+    if (this.state.display === 'showFavorite') {
+      this.setState({
+        display: 'hideFavorite'
+      })
+    } else if (this.state.display === 'hideFavorite') {
+      this.setState({
+        display: 'showFavorite'
+      })
+    }
+  }
+
+  handleAddCocktail(cocktail) {
+    this.setState({
+      cocktails: [...this.state.cocktails, cocktail]
+    })
+  }
+
+  async deleteCocktail(id) {
+    await axios.delete(`${baseURL}/cocktails/${id}`)
+    const filteredCocktails = this.state.cocktails.filter((cocktail) => {
+      return cocktail._id !== id
+    })
+  
+    this.setState({
+      cocktails: filteredCocktails
     })
   }
 
   render() {
   return (
     <div className="container">
-      <h1>Test Header</h1>
-      <div className='margarita'>
-        <h2>{this.state.margarita.name}</h2>
-        <h3>{this.state.margarita.alcoholic}</h3>
-        <h3>{this.state.margarita.glass}</h3>
-        <h3>{this.state.margarita.instructions}</h3>
+      <header>
+        <h1>Cocktails!</h1>
+      </header>
+      <NewForm 
+      handleAddCocktail={this.handleAddCocktail}
+      />
+      <button onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</button>
+      <div className="info">
+      { 
+            this.state.cocktails.map(cocktail => {
+              return (
+                <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
+                  <h2> {cocktail.name} </h2>
+                  <img src={cocktail.img}/>
+                  <h3 onClick={()=>this.deleteCocktail(cocktail._id)}>X</h3>
+                </div>
+              )
+            })
+          }
       </div>
-
-      <div className= 'manhattan'>
-        <h2>{this.state.manhattan.name}</h2>
-        <h3>{this.state.manhattan.alcoholic}</h3>
-        <h3>{this.state.manhattan.glass}</h3>
-        <h3>{this.state.manhattan.instructions}</h3>
-      </div>
-
-      <div className='gin_and_tonic'>
-        <h2>{this.state.gin_and_tonic.name}</h2>
-        <h3>{this.state.gin_and_tonic.alcoholic}</h3>
-        <h3>{this.state.gin_and_tonic.glass}</h3>
-        <h3>{this.state.gin_and_tonic.instructions}</h3>
-      </div>
-
-      <div className='mojito'>
-        <h2>{this.state.mojito.name}</h2>
-        <h3>{this.state.mojito.alcoholic}</h3>
-        <h3>{this.state.mojito.glass}</h3>
-        <h3>{this.state.mojito.instructions}</h3>
-      </div>
-
-      <div className='martini'>
-        <h2>{this.state.martini.name}</h2>
-        <h3>{this.state.martini.alcoholic}</h3>
-        <h3>{this.state.martini.glass}</h3>
-        <h3>{this.state.martini.instructions}</h3>
-      </div>
+      {this.state.isCocktailSet && <Show getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
     </div>
   );
 }
