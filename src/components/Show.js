@@ -12,7 +12,17 @@ class Show extends React.Component {
                 <h6></h6>
                 <h5>{this.props.cocktail.alcoholic}</h5>
                 <h5>{this.props.cocktail.glass}</h5>
-                <h5>{this.props.cocktail.ingredients}</h5>
+                <h5>Ingredients:</h5>
+                <ul>
+                {this.props.cocktail.ingredients.map(ingredient => {
+                    if (ingredient !== "") {
+                        return (
+                        <li>{ingredient}</li>
+                        )
+                    }
+                })
+                }
+                </ul>
                 <h5>{this.props.cocktail.instructions}</h5>
             </div>
             

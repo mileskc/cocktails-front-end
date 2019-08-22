@@ -25,7 +25,11 @@ class App extends React.Component {
     this.getCocktail = this.getCocktail.bind(this)
     this.handleAddCocktail = this.handleAddCocktail.bind(this);
     this.revealFavorite = this.revealFavorite.bind(this);
+<<<<<<< HEAD
     this.toggleFavorite = this.toggleFavorite.bind(this)
+=======
+    this.getRandomCocktail = this.getRandomCocktail.bind(this)
+>>>>>>> 0802c722a4affe4887b7e982a8f2c604ac37c51d
   }
   
   componentDidMount() {
@@ -47,6 +51,7 @@ class App extends React.Component {
         name: data.drinks[0].strDrink,
         img: data.drinks[0].strDrinkThumb,
         alcoholic: data.drinks[0].strAlcoholic,
+        glass: data.drinks[0].strGlass,
         ingredients: [data.drinks[0].strIngredient1,
         data.drinks[0].strIngredient2,
         data.drinks[0].strIngredient3,
