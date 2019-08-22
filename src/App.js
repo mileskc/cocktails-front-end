@@ -39,6 +39,35 @@ class App extends React.Component {
     this.setState({ cocktails: cocktails })
   }
 
+  async getRandomCocktail(){
+    const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+    const data = response.data
+    this.setState({
+      cocktail: {
+        name: data.drinks[0].strDrink,
+        img: data.drinks[0].strDrinkThumb,
+        alcoholic: data.drinks[0].strAlcoholic,
+        ingredients: [data.drinks[0].strIngredient1,
+        data.drinks[0].strIngredient2,
+        data.drinks[0].strIngredient3,
+        data.drinks[0].strIngredient4,
+        data.drinks[0].strIngredient5,
+        data.drinks[0].strIngredient6,
+        data.drinks[0].strIngredient7,
+        data.drinks[0].strIngredient8,
+        data.drinks[0].strIngredient9,
+        data.drinks[0].strIngredient10,
+        data.drinks[0].strIngredient11,
+        data.drinks[0].strIngredient12,
+        data.drinks[0].strIngredient13,
+        data.drinks[0].strIngredient14,
+        data.drinks[0].strIngredient15],
+        instructions: data.drinks[0].strInstructions
+      },
+      isCocktailSet: true
+    })
+  }
+
   getCocktail(cocktail) {
     this.setState({ 
       cocktail: cocktail ,
@@ -99,6 +128,7 @@ class App extends React.Component {
       <NewForm 
       handleAddCocktail={this.handleAddCocktail}
       />
+      <button onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</button>
       <div className="info">
       { 
             this.state.cocktails.map(cocktail => {
@@ -111,7 +141,7 @@ class App extends React.Component {
             })
           }
       </div>
-      {this.state.isCocktailSet && <Show display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
+      {this.state.isCocktailSet && <Show getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
     </div>
   );
 }
