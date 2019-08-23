@@ -75,7 +75,8 @@ class App extends React.Component {
     this.setState({ 
       cocktail: cocktail ,
       isCocktailSet: true, 
-      display: 'hideFavorite'
+      display: 'hideFavorite',
+
     })
   }
 
@@ -89,6 +90,7 @@ class App extends React.Component {
         return cocktail;
       }
     })
+    console.log(updatedCocktail)
     this.setState({
       cocktails: updatedCocktail
     })
@@ -104,6 +106,7 @@ class App extends React.Component {
         display: 'showFavorite'
       })
     }
+    this.toggleFavorite(this.state)
   }
 
   handleAddCocktail(cocktail) {
