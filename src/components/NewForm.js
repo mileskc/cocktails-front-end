@@ -18,6 +18,9 @@ if(process.env.NODE_ENV === 'development') {
                 alcoholic: '', 
                 glass: '',
                 ingredients: [],
+                ingredients2: [],
+                ingredients3: [],
+                ingredients4: [],
                 instructions: ''
             }
             this.handleChange = this.handleChange.bind(this);
@@ -35,6 +38,9 @@ if(process.env.NODE_ENV === 'development') {
                 alcoholic: this.state.alcoholic,
                 glass: this.state.glass,
                 ingredients: this.state.ingredients,
+                ingredients2: this.state.ingredients2,
+                ingredients3: this.state.ingredients3,
+                ingredients4: this.state.ingredients4,
                 instructions: this.state.instructions
             })
             this.props.handleAddCocktail(response.data);
@@ -75,9 +81,36 @@ if(process.env.NODE_ENV === 'development') {
                     type='text'
                     id='ingredients'
                     onChange={this.handleChange}
-                    value={this.state.ingredients}
+                    defaultValue={this.state.ingredients}
                     placeholder='what do you need?'
                     />
+
+                    <input 
+                    type='text'
+                    id='ingredients2'
+                    onChange={this.handleChange}
+                    defaultValue={this.state.ingredients2}
+                    placeholder='what other ingredients?'
+                    />
+
+                    <input 
+                    type='text'
+                    id='ingredients3'
+                    onChange={this.handleChange}
+                    defaultValue={this.state.ingredients3}
+                    placeholder='what other ingredients?'
+                    />
+
+                    <input 
+                    type='text'
+                    id='ingredients4'
+                    onChange={this.handleChange}
+                    defaultValue={this.state.ingredients4}
+                    placeholder='what other ingredients?'
+                    />
+
+
+
                     <input 
                     type='text'
                     id='instructions'
