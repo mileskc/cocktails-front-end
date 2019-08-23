@@ -118,21 +118,20 @@ class App extends React.Component {
       />
       <button onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</button>
       <div class="row">
-      
       { 
             this.state.cocktails.map(cocktail => {
               return (
-                <div class="col s12 m7 l4">
-      <div class="card">
+                <div className="col s12 m7 l4">
+      <div className="card">
                 <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
-                  <div class="card-image">
+                  <div className="card-image">
                   <img src={cocktail.img}/>
                   </div>
-                  <div class="card-content">
+                  <div className="card-content">
                   <h2> {cocktail.name} </h2>
                   </div>
-                  <div class="card-action">
-                  <a class="waves-effect waves-light btn" onClick={()=>this.deleteCocktail(cocktail._id)}>Delete</a>
+                  <div className="card-action">
+                  <a className="waves-effect waves-light btn" onClick={()=>this.deleteCocktail(cocktail._id)}>Delete</a>
                   </div>
                 </div>
               </div>
@@ -140,9 +139,10 @@ class App extends React.Component {
               )
             })
           }
-      
       </div>
-      {this.state.isCocktailSet && <Show getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
+      <div className = "show">
+              {this.state.isCocktailSet && <Show getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
+              </div>
     </div>
   );
 }
