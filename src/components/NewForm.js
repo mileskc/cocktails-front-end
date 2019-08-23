@@ -76,7 +76,7 @@ if(process.env.NODE_ENV === 'development') {
                     id='ingredients'
                     onChange={this.handleChange}
                     value={this.state.ingredients}
-                    placeholder='what do you need?'
+                    placeholder='what is your first ingredient'
                     />
                     <input 
                     type='text'

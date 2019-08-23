@@ -19,7 +19,8 @@ class App extends React.Component {
      cocktails: [],
      isCocktailSet: false, 
      cocktail: {},
-     isAddButtonClicked: false
+     isAddButtonClicked: false,
+     hideShowForm: false
     }
     
     this.getCocktails = this.getCocktails.bind(this)
@@ -29,6 +30,7 @@ class App extends React.Component {
     this.revealFavorite = this.revealFavorite.bind(this);
     this.getRandomCocktail = this.getRandomCocktail.bind(this)
     this.revealNewForm= this.revealNewForm.bind(this)
+    this.hideShowCard = this.hideShowCard.bind(this)
   }
   
   componentDidMount() {
@@ -104,6 +106,12 @@ class App extends React.Component {
   }
 }
 
+  hideShowCard() {
+    this.setState({
+        hideShowForm: true
+    })
+  }
+
   handleAddCocktail(cocktail) {
     this.setState({
       cocktails: [...this.state.cocktails, cocktail]
@@ -156,7 +164,7 @@ class App extends React.Component {
           }
       </div>
       <div className = "show">
-              {this.state.isCocktailSet && <Show getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
+              {this.state.isCocktailSet && <Show hideShowCard={this.hideShowCard} getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
               </div>
     </div>
   );

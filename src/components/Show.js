@@ -5,6 +5,7 @@ class Show extends React.Component {
         return (
             <div className="details">
                 <h3>Cocktail Info</h3>
+                {/* <button onClick={() => this.props.hideShowCard()}>Hide Info</button> */}
                 <hr/>
                 <h4> {this.props.cocktail.name}</h4>
                 <img src={this.props.cocktail.img}/>
