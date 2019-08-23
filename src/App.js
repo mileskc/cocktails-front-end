@@ -112,10 +112,8 @@ class App extends React.Component {
       cocktail: cocktail ,
       isCocktailSet: true, 
       display: 'hideFavorite',
-
     })
   }
-
 
   async revealFavorite(cocktail) {
     const copyCocktail = cocktail;
