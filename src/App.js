@@ -21,7 +21,7 @@ class App extends React.Component {
      cocktail: {},
      isAddButtonClicked: false,
      hideShowForm: false,
-     name: ''
+     drinkName: ''
     }
     
     this.getCocktails = this.getCocktails.bind(this)
@@ -33,6 +33,7 @@ class App extends React.Component {
     this.revealNewForm= this.revealNewForm.bind(this)
     this.hideShowCard = this.hideShowCard.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   
   componentDidMount() {
@@ -76,7 +77,8 @@ class App extends React.Component {
     })
   }
 
-  async handleSubmit(){
+  async handleSubmit(event){
+    event.preventDefault();
     const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${this.state.drinkName}`)
     const data = response.data
     this.setState({
@@ -180,7 +182,7 @@ class App extends React.Component {
       />}
       <form onSubmit={this.handleSubmit}>
       <input onChange={this.handleChange} type='text'id='drinkName' defaultValue={this.state.drinkName} placeholder='search for drink'></input>
-      <input onClick={() => this.handleSubmit()} type='submit' value='search by name'></input>
+      <input type='submit' value='search by name'></input>
       </form>
       <button onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</button>
       <div className="row">
