@@ -26,6 +26,7 @@ display: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  flex-direction: row;
 }
 
 .favorite {
@@ -47,12 +48,45 @@ header {
   font-size: 40px;
 }
 
-.info {
+.card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 300px;
+  height: 470px;
+  /* margin: 5px; */
+}
+
+.col.s12.m6.l4 {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
+  /* width: 400px; */
 }
 
 .drink {
   margin: 50px;
   font-size: 20px;
+}
+
+button {
+  width: 100%;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+img {
+  /* width: 30%; */
+  height: 150px;
+}
+
+.card-image {
+  /* width: 100%; */
+  width: 200px;
+}
+
+.show {
+  width: 100%;
 }

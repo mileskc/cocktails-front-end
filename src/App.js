@@ -4,6 +4,7 @@ import './App.css';
 import NewForm from './components/NewForm';
 import Show from './components/Show';
 
+
 let baseURL = process.env.REACT_APP_BASEURL
 
 if (process.env.NODE_ENV === 'development') {
@@ -18,7 +19,8 @@ class App extends React.Component {
      cocktails: [],
      isCocktailSet: false, 
      cocktail: {},
-     favorite: ''
+     isAddButtonClicked: false,
+     hideShowForm: false
     }
     
     this.getCocktails = this.getCocktails.bind(this)
@@ -28,6 +30,8 @@ class App extends React.Component {
     this.revealFavorite = this.revealFavorite.bind(this);
     this.toggleFavorite = this.toggleFavorite.bind(this)
     this.getRandomCocktail = this.getRandomCocktail.bind(this)
+    this.revealNewForm= this.revealNewForm.bind(this)
+    this.hideShowCard = this.hideShowCard.bind(this)
   }
   
   componentDidMount() {
@@ -109,6 +113,24 @@ class App extends React.Component {
     this.toggleFavorite(this.state)
   }
 
+  revealNewForm() {
+    if(this.state.isAddButtonClicked === false) {
+    this.setState({
+    isAddButtonClicked: true
+  })
+  } else if (this.state.isAddButtonClicked === true) {
+    this.setState({
+      isAddButtonClicked: false
+    })
+  }
+}
+
+  hideShowCard() {
+    this.setState({
+        hideShowForm: true
+    })
+  }
+
   handleAddCocktail(cocktail) {
     this.setState({
       cocktails: [...this.state.cocktails, cocktail]
@@ -130,30 +152,39 @@ class App extends React.Component {
   return (
     <div className="container">
       <header>
-        <h1>Cocktails!</h1>
+        <h1>Bar None</h1>
       </header>
-      <NewForm 
+      <button onClick={()=> this.revealNewForm()}>Add a drink</button>
+      {this.state.isAddButtonClicked && <NewForm 
       handleAddCocktail={this.handleAddCocktail}
-      />
+      />}
       <button onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</button>
-      <div className="info">
+      <div class="row">
       { 
             this.state.cocktails.map(cocktail => {
               return (
-                <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink"
-                
-
-                >
-                  <div  onClick={()=>this.toggleFavorite(cocktail)} className={cocktail.favorite ? 'cocktail' : null}></div>
-                  <h2> {cocktail.name} </h2>
+                <div className="col s12 m7 l4">
+      <div className="card">
+                <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
+                  <div className="card-image">
                   <img src={cocktail.img}/>
-                  <h3 onClick={()=>this.deleteCocktail(cocktail._id)}>X</h3>
+                  </div>
+                  <div className="card-content">
+                  <h2> {cocktail.name} </h2>
+                  </div>
+                  <div className="card-action">
+                  <a className="waves-effect waves-light btn" onClick={()=>this.deleteCocktail(cocktail._id)}>Delete</a>
+                  </div>
                 </div>
+              </div>
+              </div>
               )
             })
           }
       </div>
-      {this.state.isCocktailSet && <Show getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
+      <div className = "show">
+              {this.state.isCocktailSet && <Show hideShowCard={this.hideShowCard} getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
+              </div>
     </div>
   );
 }
