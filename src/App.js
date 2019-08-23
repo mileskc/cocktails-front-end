@@ -132,7 +132,7 @@ class App extends React.Component {
                   <h2> {cocktail.name} </h2>
                   </div>
                   <div class="card-action">
-                  <h3 onClick={()=>this.deleteCocktail(cocktail._id)}>X</h3>
+                  <a class="waves-effect waves-light btn" onClick={()=>this.deleteCocktail(cocktail._id)}>Delete</a>
                   </div>
                 </div>
                 </div>
