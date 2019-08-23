@@ -4,6 +4,7 @@ import './App.css';
 import NewForm from './components/NewForm';
 import Show from './components/Show';
 
+
 let baseURL = process.env.REACT_APP_BASEURL
 
 if (process.env.NODE_ENV === 'development') {
@@ -17,7 +18,10 @@ class App extends React.Component {
      display: 'hideFavorite',
      cocktails: [],
      isCocktailSet: false, 
-     cocktail: {}
+     cocktail: {},
+     isAddButtonClicked: false,
+     hideShowForm: false,
+     name: ''
     }
     
     this.getCocktails = this.getCocktails.bind(this)
@@ -26,6 +30,9 @@ class App extends React.Component {
     this.handleAddCocktail = this.handleAddCocktail.bind(this);
     this.revealFavorite = this.revealFavorite.bind(this);
     this.getRandomCocktail = this.getRandomCocktail.bind(this)
+    this.revealNewForm= this.revealNewForm.bind(this)
+    this.hideShowCard = this.hideShowCard.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
   
   componentDidMount() {
@@ -69,6 +76,37 @@ class App extends React.Component {
     })
   }
 
+  async handleSubmit(){
+    const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${this.state.drinkName}`)
+    const data = response.data
+    this.setState({
+      cocktail: {
+        name: data.drinks[0].strDrink,
+        img: data.drinks[0].strDrinkThumb,
+        alcoholic: data.drinks[0].strAlcoholic,
+        glass: data.drinks[0].strGlass,
+        ingredients: [data.drinks[0].strIngredient1,
+        data.drinks[0].strIngredient2,
+        data.drinks[0].strIngredient3,
+        data.drinks[0].strIngredient4,
+        data.drinks[0].strIngredient5,
+        data.drinks[0].strIngredient6,
+        data.drinks[0].strIngredient7,
+        data.drinks[0].strIngredient8,
+        data.drinks[0].strIngredient9,
+        data.drinks[0].strIngredient10,
+        data.drinks[0].strIngredient11,
+        data.drinks[0].strIngredient12,
+        data.drinks[0].strIngredient13,
+        data.drinks[0].strIngredient14,
+        data.drinks[0].strIngredient15],
+        instructions: data.drinks[0].strInstructions
+      },
+      isCocktailSet: true
+    })
+    console.log(this.state.drinkName)
+  }
+
   getCocktail(cocktail) {
     this.setState({ 
       cocktail: cocktail ,
@@ -77,16 +115,36 @@ class App extends React.Component {
     })
   }
 
-  revealFavorite() {
-    if (this.state.display === 'showFavorite') {
-      this.setState({
-        display: 'hideFavorite'
-      })
-    } else if (this.state.display === 'hideFavorite') {
-      this.setState({
-        display: 'showFavorite'
-      })
+  async revealFavorite(cocktail) {
+    const copyCocktail = cocktail;
+    if (cocktail.favorite) {
+      copyCocktail.favorite = false
+    } else {
+      copyCocktail.favorite = true
     }
+    console.log(`${baseURL}/cocktails/${cocktail._id}`);
+    await axios.put(`${baseURL}/cocktails/${cocktail._id}`, copyCocktail)
+    this.setState({
+      cocktail: copyCocktail
+    })
+  }
+
+  revealNewForm() {
+    if(this.state.isAddButtonClicked === false) {
+    this.setState({
+    isAddButtonClicked: true
+  })
+  } else if (this.state.isAddButtonClicked === true) {
+    this.setState({
+      isAddButtonClicked: false
+    })
+  }
+}
+
+  hideShowCard() {
+    this.setState({
+        hideShowForm: true
+    })
   }
 
   handleAddCocktail(cocktail) {
@@ -106,30 +164,51 @@ class App extends React.Component {
     })
   }
 
+    handleChange(event) {
+    this.setState({ drinkName: event.target.value })
+  }
+
   render() {
   return (
     <div className="container">
       <header>
-        <h1>Cocktails!</h1>
+        <h1>Bar None</h1>
       </header>
-      <NewForm 
+      <button onClick={()=> this.revealNewForm()}>Add a drink</button>
+      {this.state.isAddButtonClicked && <NewForm 
       handleAddCocktail={this.handleAddCocktail}
-      />
+      />}
+      <form onSubmit={this.handleSubmit}>
+      <input onChange={this.handleChange} type='text'id='drinkName' defaultValue={this.state.drinkName} placeholder='search for drink'></input>
+      <input onClick={() => this.handleSubmit()} type='submit' value='search by name'></input>
+      </form>
       <button onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</button>
-      <div className="info">
+      <div className="row">
       { 
             this.state.cocktails.map(cocktail => {
               return (
+                <div className="col s12 m7 l4">
+      <div className="card">
                 <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
-                  <h2> {cocktail.name} </h2>
+                  <div className="card-image">
                   <img src={cocktail.img}/>
-                  <h3 onClick={()=>this.deleteCocktail(cocktail._id)}>X</h3>
+                  </div>
+                  <div className="card-content">
+                  <h2> {cocktail.name} </h2>
+                  </div>
+                  <div className="card-action">
+                  <a className="waves-effect waves-light btn" onClick={()=>this.deleteCocktail(cocktail._id)}>Delete</a>
+                  </div>
                 </div>
+              </div>
+              </div>
               )
             })
           }
       </div>
-      {this.state.isCocktailSet && <Show getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
+      <div className = "show">
+              {this.state.isCocktailSet && <Show hideShowCard={this.hideShowCard} handleSubmit={this.handleSubmit} getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
+              </div>
     </div>
   );
 }
