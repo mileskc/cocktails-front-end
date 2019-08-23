@@ -123,20 +123,20 @@ class App extends React.Component {
             this.state.cocktails.map(cocktail => {
               return (
                 <div class="col s12 m7 l4">
-      <div class="card">
-                <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
-                  <div class="card-image">
-                  <img src={cocktail.img}/>
-                  </div>
-                  <div class="card-content">
-                  <h2> {cocktail.name} </h2>
-                  </div>
-                  <div class="card-action">
-                  <h3 onClick={()=>this.deleteCocktail(cocktail._id)}>X</h3>
+                  <div class="card">
+                    <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
+                      <div class="card-image">
+                        <img src={cocktail.img}/>
+                      </div>
+                    <div class="card-content">
+                      <h2> {cocktail.name} </h2>
+                    </div>
+                    <div class="card-action">
+                      <h3 onClick={()=>this.deleteCocktail(cocktail._id)}>X</h3>
+                    </div>
                   </div>
                 </div>
-                </div>
-      </div>
+              </div>
               )
             })
           }

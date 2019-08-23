@@ -49,6 +49,7 @@ header {
   flex-wrap: wrap;
   width: 300px;
   height: 470px;
+  /* margin: 5px; */
 }
 
 .col.s12.m6.l4 {
@@ -67,10 +68,16 @@ button {
   width: 100%;
 }
 
-.card-image {
-  width: 200px;
+h2 {
+  font-size: 20px;
 }
 
-h2 {
-  font-size: 30px;
+img {
+  /* width: 30%; */
+  height: 150px;
+}
+
+.card-image {
+  /* width: 100%; */
+  width: 200px;
 }
