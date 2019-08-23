@@ -29,7 +29,6 @@ class App extends React.Component {
     this.getCocktail = this.getCocktail.bind(this)
     this.handleAddCocktail = this.handleAddCocktail.bind(this);
     this.revealFavorite = this.revealFavorite.bind(this);
-    this.toggleFavorite = this.toggleFavorite.bind(this)
     this.getRandomCocktail = this.getRandomCocktail.bind(this)
     this.revealNewForm= this.revealNewForm.bind(this)
     this.hideShowCard = this.hideShowCard.bind(this)
@@ -117,21 +116,6 @@ class App extends React.Component {
     })
   }
 
-  async toggleFavorite(selectedCocktail) {
-    await axios.put(`${baseURL}/cocktails/${selectedCocktail._id}`, { favorite: !selectedCocktail.favorite })
-    const updatedCocktail = this.state.cocktails.map(cocktail =>{
-      if (cocktail._id === selectedCocktail._id) {
-        cocktail.favorite = !cocktail.favorite;
-        return cocktail;
-      } else {
-        return cocktail;
-      }
-    })
-    console.log(updatedCocktail)
-    this.setState({
-      cocktails: updatedCocktail
-    })
-  }
 
   async revealFavorite(cocktail) {
     const copyCocktail = cocktail;
