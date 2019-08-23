@@ -18,7 +18,8 @@ class App extends React.Component {
      display: 'hideFavorite',
      cocktails: [],
      isCocktailSet: false, 
-     cocktail: {}
+     cocktail: {},
+     isAddButtonClicked: false
     }
     
     this.getCocktails = this.getCocktails.bind(this)
@@ -27,6 +28,7 @@ class App extends React.Component {
     this.handleAddCocktail = this.handleAddCocktail.bind(this);
     this.revealFavorite = this.revealFavorite.bind(this);
     this.getRandomCocktail = this.getRandomCocktail.bind(this)
+    this.revealNewForm= this.revealNewForm.bind(this)
   }
   
   componentDidMount() {
@@ -90,6 +92,18 @@ class App extends React.Component {
     }
   }
 
+  revealNewForm() {
+    if(this.state.isAddButtonClicked === false) {
+    this.setState({
+    isAddButtonClicked: true
+  })
+  } else if (this.state.isAddButtonClicked === true) {
+    this.setState({
+      isAddButtonClicked: false
+    })
+  }
+}
+
   handleAddCocktail(cocktail) {
     this.setState({
       cocktails: [...this.state.cocktails, cocktail]
@@ -111,11 +125,12 @@ class App extends React.Component {
   return (
     <div className="container">
       <header>
-        <h1>Cocktails!</h1>
+        <h1>Bar None</h1>
       </header>
-      <NewForm 
+      <button onClick={()=> this.revealNewForm()}>Add a drink</button>
+      {this.state.isAddButtonClicked && <NewForm 
       handleAddCocktail={this.handleAddCocktail}
-      />
+      />}
       <button onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</button>
       <div class="row">
       { 

@@ -86,7 +86,7 @@ if(process.env.NODE_ENV === 'development') {
                     placeholder='How are you going to make it?'
                     />
                     <input type='submit'
-                    value='Add a drink!'
+                    value='Submit drink!'
                     />
                 </form>
             )
