@@ -110,7 +110,7 @@ class App extends React.Component {
         display: 'showFavorite'
       })
     }
-    this.toggleFavorite(this.state)
+    this.toggleFavorite(this.state.cocktails)
   }
 
   revealNewForm() {
