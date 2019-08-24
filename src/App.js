@@ -114,7 +114,7 @@ class App extends React.Component {
   async searchIngredient(event){
     event.preventDefault();
     const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${this.state.ingredientSearch}`)
-    const cocktailName = response.data.drinks[0].strDrink
+    const cocktailName = response.data.drinks[Math.floor(Math.random() * response.data.drinks.length)].strDrink
     const nameResponse = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`)
     const data = nameResponse.data
     this.setState({
