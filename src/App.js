@@ -34,7 +34,7 @@ class App extends React.Component {
     this.revealNewForm= this.revealNewForm.bind(this)
     this.hideShowCard = this.hideShowCard.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.searchName = this.searchName.bind(this)
     this.searchIngredient = this.searchIngredient.bind(this)
   }
   
@@ -79,7 +79,7 @@ class App extends React.Component {
     })
   }
 
-  async handleSubmit(event){
+  async searchName(event){
     event.preventDefault();
     const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${this.state.drinkName}`)
     const data = response.data
@@ -219,7 +219,7 @@ class App extends React.Component {
       {this.state.isAddButtonClicked && <NewForm 
       handleAddCocktail={this.handleAddCocktail}
       />}
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.searchName}>
       <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
       {/* defaultValue={this.state.drinkName} */}
       <input type='submit' value='search by name'></input>
@@ -254,7 +254,7 @@ class App extends React.Component {
           }
       </div>
       <div className = "show">
-              {this.state.isCocktailSet && <Show hideShowCard={this.hideShowCard} handleSubmit={this.handleSubmit} getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
+              {this.state.isCocktailSet && <Show hideShowCard={this.hideShowCard} searchName={this.searchName} getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
               </div>
     </div>
   );
