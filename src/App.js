@@ -21,7 +21,8 @@ class App extends React.Component {
      cocktail: {},
      isAddButtonClicked: false,
      hideShowForm: false,
-     drinkName: ''
+     drinkName: '',
+     ingredientSearch: ''
     }
     
     this.getCocktails = this.getCocktails.bind(this)
@@ -34,6 +35,7 @@ class App extends React.Component {
     this.hideShowCard = this.hideShowCard.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.searchIngredient = this.searchIngredient.bind(this)
   }
   
   componentDidMount() {
@@ -109,6 +111,40 @@ class App extends React.Component {
     console.log(this.state.drinkName)
   }
 
+  async searchIngredient(event){
+    event.preventDefault();
+    const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${this.state.ingredientSearch}`)
+    const cocktailName = response.data.drinks[0].strDrink
+    const nameResponse = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`)
+    const data = nameResponse.data
+    this.setState({
+      cocktail: {
+        name: data.drinks[0].strDrink,
+        img: data.drinks[0].strDrinkThumb,
+        alcoholic: data.drinks[0].strAlcoholic,
+        glass: data.drinks[0].strGlass,
+        ingredients: [data.drinks[0].strIngredient1,
+        data.drinks[0].strIngredient2,
+        data.drinks[0].strIngredient3,
+        data.drinks[0].strIngredient4,
+        data.drinks[0].strIngredient5,
+        data.drinks[0].strIngredient6,
+        data.drinks[0].strIngredient7,
+        data.drinks[0].strIngredient8,
+        data.drinks[0].strIngredient9,
+        data.drinks[0].strIngredient10,
+        data.drinks[0].strIngredient11,
+        data.drinks[0].strIngredient12,
+        data.drinks[0].strIngredient13,
+        data.drinks[0].strIngredient14,
+        data.drinks[0].strIngredient15],
+        instructions: data.drinks[0].strInstructions
+      },
+      isCocktailSet: true
+    })
+    console.log(this.state.ingredientSearch)
+  }
+
   getCocktail(cocktail) {
     this.setState({ 
       cocktail: cocktail ,
@@ -167,7 +203,10 @@ class App extends React.Component {
   }
 
     handleChange(event) {
-    this.setState({ drinkName: event.target.value })
+    this.setState({ 
+      drinkName: event.target.value, 
+      ingredientSearch: event.target.value
+    })
   }
 
   render() {
@@ -181,8 +220,14 @@ class App extends React.Component {
       handleAddCocktail={this.handleAddCocktail}
       />}
       <form onSubmit={this.handleSubmit}>
-      <input onChange={this.handleChange} type='text'id='drinkName' defaultValue={this.state.drinkName} placeholder='search for drink'></input>
+      <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
+      {/* defaultValue={this.state.drinkName} */}
       <input type='submit' value='search by name'></input>
+      </form>
+      <form onSubmit={this.searchIngredient}>
+      <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
+      {/* defaultValue={this.state.drinkName} */}
+      <input type='submit' value='search by ingredient'></input>
       </form>
       <button onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</button>
       <div className="row">
