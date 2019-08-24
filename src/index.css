@@ -85,3 +85,7 @@ img {
 .show {
   width: 100%;
 }
+
+form {
+  margin: 5px;
+}
