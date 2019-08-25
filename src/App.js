@@ -215,7 +215,7 @@ class App extends React.Component {
       <header>
         <h1>Bar None</h1>
       </header>
-      <button onClick={()=> this.revealNewForm()}>Add a drink</button>
+      <button className = "addDrink" onClick={()=> this.revealNewForm()}>Add a drink</button>
       {this.state.isAddButtonClicked && <NewForm 
       handleAddCocktail={this.handleAddCocktail}
       />}
@@ -234,7 +234,7 @@ class App extends React.Component {
       { 
             this.state.cocktails.map(cocktail => {
               return (
-                <div className="col s12 m7 l4">
+                <div className="col s12 m4 l3">
       <div className="card">
                 <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
                   <div className="card-image">
