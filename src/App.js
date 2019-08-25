@@ -215,7 +215,7 @@ class App extends React.Component {
       <header>
         <h1>Bar None</h1>
       </header>
-      <button className = "addDrink" onClick={()=> this.revealNewForm()}>Add a drink</button>
+      <a className="waves-effect waves-light btn" onClick={()=> this.revealNewForm()}>Add a drink</a>
       {this.state.isAddButtonClicked && <NewForm 
       handleAddCocktail={this.handleAddCocktail}
       />}
@@ -229,8 +229,9 @@ class App extends React.Component {
       {/* defaultValue={this.state.drinkName} */}
       <input type='submit' value='search by ingredient'></input>
       </form>
-      <button onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</button>
+      <a className="waves-effect waves-light btn" onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!></a>
       <div className="row">
+
       { 
             this.state.cocktails.map(cocktail => {
               return (
