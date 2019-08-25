@@ -101,6 +101,13 @@ img {
   width: 100%;
 }
 
+.card-action {
+  text-align: center;
+}
+
+.card-content {
+  text-align: center;
+}
 .show {
   width: 100%;
 }
