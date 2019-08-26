@@ -13,7 +13,7 @@ code {
 
 /* body {
   background-image: url('https://images.unsplash.com/photo-1509807995916-c332365e2d9e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1942&q=80');
-  background-position: fixed;
+  background-attachment: fixed;
 } */
 
 .showFavorite {
@@ -64,6 +64,7 @@ code {
     height: 400px;
     box-shadow: 5px 5px 13px gray;
     background-color: rgb(243, 247, 244);
+    border: gray solid 1px;
     /* margin: 5px; */
   }
   
@@ -175,4 +176,11 @@ code {
 /* div {
   display: flex;
   width:100%;
+} */
+/* 
+.searchBars {
+  background-color: rgba(243, 247, 244, .6);
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
 } */

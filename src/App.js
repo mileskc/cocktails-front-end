@@ -234,11 +234,14 @@ class App extends React.Component {
       <header>
         <h1>Bar None</h1>
       </header>
+      
       <a className="waves-effect waves-light btn" id="add" onClick={()=> this.revealNewForm()}>Add a drink</a>
       <a className="waves-effect waves-light btn" id="random" onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</a>
+      
       {this.state.isAddButtonClicked && <NewForm 
       handleAddCocktail={this.handleAddCocktail}
       />}
+
       <form onSubmit={this.searchName}>
       <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
       {/* defaultValue={this.state.drinkName} */}
@@ -249,6 +252,7 @@ class App extends React.Component {
       {/* defaultValue={this.state.drinkName} */}
       <input onClick={this.openModalHandler} type='submit' className="waves-effect waves-light btn" value='search by ingredient'></input>
       </form>
+      
       <div className="row">
       
 
