@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import axios from 'axios';
 
@@ -18,6 +19,9 @@ if(process.env.NODE_ENV === 'development') {
                 alcoholic: '', 
                 glass: '',
                 ingredients: [],
+                ing1: '',
+                ing2: '',
+                ing3: '',
                 instructions: ''
             }
             this.handleChange = this.handleChange.bind(this);
@@ -29,12 +33,14 @@ if(process.env.NODE_ENV === 'development') {
         }
         async handleSubmit(event) {
             event.preventDefault();
+            const allIngredients = []
+            allIngredients.push(this.state.ing1, this.state.ing2, this.state.ing3)
             const response = await axios.post(`${baseURL}/cocktails`, {
                 name: this.state.name,
                 img: this.state.img,
                 alcoholic: this.state.alcoholic,
                 glass: this.state.glass,
-                ingredients: this.state.ingredients,
+                ingredients: allIngredients,
                 instructions: this.state.instructions
             })
             this.props.handleAddCocktail(response.data);
@@ -68,25 +74,42 @@ if(process.env.NODE_ENV === 'development') {
                     type='text'
                     id='glass'
                     onChange={this.handleChange}
-                    value={this.state.glass}
+                    defaultValue={this.state.glass}
                     placeholder='what glass?'
                     />
                     <input 
                     type='text'
-                    id='ingredients'
+                    id='ing1'
                     onChange={this.handleChange}
-                    value={this.state.ingredients}
-                    placeholder='what do you need?'
+                    defaultValue={this.state.ing1}
+                    placeholder='what is your first ingredient?'
                     />
+
+                    <input 
+                    type='text'
+                    id='ing2'
+                    onChange={this.handleChange}
+                    defaultValue={this.state.ing2}
+                    placeholder='what is your second ingredient?'
+                    />
+
+                    <input 
+                    type='text'
+                    id='ing3'
+                    onChange={this.handleChange}
+                    defaultValue={this.state.ing3}
+                    placeholder='what is your third ingredient?'
+                    />  
+
                     <input 
                     type='text'
                     id='instructions'
                     onChange={this.handleChange}
                     value={this.state.instructions}
-                    placeholder='How are you going to make it?'
+                    placeholder='How do you make it?'
                     />
-                    <input type='submit'
-                    value='Add a drink!'
+                    <input className="waves-effect waves-light btn" type='submit'
+                    value='Submit drink!'
                     />
                 </form>
             )
