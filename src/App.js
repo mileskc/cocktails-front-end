@@ -215,21 +215,21 @@ class App extends React.Component {
       <header>
         <h1>Bar None</h1>
       </header>
-      <a className="waves-effect waves-light btn" onClick={()=> this.revealNewForm()}>Add a drink</a>
+      <a className="waves-effect waves-light btn" id="add" onClick={()=> this.revealNewForm()}>Add a drink</a>
       {this.state.isAddButtonClicked && <NewForm 
       handleAddCocktail={this.handleAddCocktail}
       />}
       <form onSubmit={this.searchName}>
       <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
       {/* defaultValue={this.state.drinkName} */}
-      <input type='submit' value='search by name'></input>
+      <input type='submit' className="waves-effect waves-light btn" value='search by name'></input>
       </form>
       <form onSubmit={this.searchIngredient}>
       <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
       {/* defaultValue={this.state.drinkName} */}
-      <input type='submit' value='search by ingredient'></input>
+      <input type='submit' className="waves-effect waves-light btn" value='search by ingredient'></input>
       </form>
-      <a className="waves-effect waves-light btn" onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!></a>
+      <a className="waves-effect waves-light btn" id="random" onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</a>
       <div className="row">
 
       { 
