@@ -243,14 +243,14 @@ class App extends React.Component {
       />}
 
       <form onSubmit={this.searchName}>
-      <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
+        <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
       {/* defaultValue={this.state.drinkName} */}
-      <input onClick={this.openModalHandler} type='submit' className="waves-effect waves-light btn" value='search by name'></input>
+        <input onClick={this.openModalHandler} type='submit' className="waves-effect waves-light btn" value='search by name'></input>
       </form>
       <form onSubmit={this.searchIngredient}>
-      <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
+        <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
       {/* defaultValue={this.state.drinkName} */}
-      <input onClick={this.openModalHandler} type='submit' className="waves-effect waves-light btn" value='search by ingredient'></input>
+        <input onClick={this.openModalHandler} type='submit' className="waves-effect waves-light btn" value='search by ingredient'></input>
       </form>
       
       <div className="row">
@@ -260,20 +260,23 @@ class App extends React.Component {
             this.state.cocktails.map(cocktail => {
               return (
                 <div className="col s12 m4 l3">
-      <div className="card">
-                <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
-                  <div onClick={this.openModalHandler} className="card-image">
-                  <img src={cocktail.img}/>
-                  </div>
-                  <div className="card-content">
-                  <h2> {cocktail.name} </h2>
-                  </div>
-                  <div className="card-action">
-                  <a className="waves-effect waves-light btn" onClick={()=>this.deleteCocktail(cocktail._id)}>Delete</a>
+                  <div className="card">
+                    <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
+                      <div onClick={this.openModalHandler} className="card-image">
+                        <img src={cocktail.img}/>
+                      </div>
+                      <div className="card-content">
+                        <h2> {cocktail.name} </h2>
+                        {(cocktail.favorite===true) ?
+                          <h6 class="material-icons">star_border</h6> : null
+                        }
+                      </div>
+                      <div className="card-action">
+                        <a className="waves-effect waves-light btn" onClick={()=>this.deleteCocktail(cocktail._id)}>Delete</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              </div>
               )
             })
           }
@@ -288,8 +291,8 @@ class App extends React.Component {
         >
 
       <div className = "show">
-              {this.state.isCocktailSet && <Show hideShowCard={this.hideShowCard} searchName={this.searchName} searchIngredient = {this.searchIngredient} getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
-              </div>
+        {this.state.isCocktailSet && <Show hideShowCard={this.hideShowCard} searchName={this.searchName} searchIngredient = {this.searchIngredient} getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
+      </div>
     </Modal>
     </div>
     </div>

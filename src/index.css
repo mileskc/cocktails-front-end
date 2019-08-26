@@ -61,7 +61,7 @@ code {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 400px;
+    height: 450px;
     box-shadow: 5px 5px 13px gray;
     background-color: rgb(243, 247, 244);
     border: gray solid 1px;
@@ -87,6 +87,7 @@ code {
   h2 {
     font-size: 20px;
     font-family: 'Montserrat', sans-serif;
+    height: 30px;
   }
   
   img {
@@ -107,7 +108,10 @@ code {
   
   .card-content {
     text-align: center;
+    height: 175px;
   }
+
+
   .show {
     width: 100%;
   }
