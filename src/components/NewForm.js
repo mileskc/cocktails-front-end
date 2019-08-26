@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import axios from 'axios';
 
@@ -78,6 +79,10 @@ if(process.env.NODE_ENV === 'development') {
                     value={this.state.ingredients}
                     placeholder='what is your first ingredient'
                     />
+
+
+
+
                     <input 
                     type='text'
                     id='instructions'
@@ -85,7 +90,7 @@ if(process.env.NODE_ENV === 'development') {
                     value={this.state.instructions}
                     placeholder='How are you going to make it?'
                     />
-                    <input type='submit'
+                    <input className="waves-effect waves-light btn" type='submit'
                     value='Submit drink!'
                     />
                 </form>
