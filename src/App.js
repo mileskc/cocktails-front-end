@@ -255,9 +255,9 @@ class App extends React.Component {
             this.state.cocktails.map(cocktail => {
               return (
                 <div className="col s12 m4 l3">
-      <div className="card" onClick={this.openModalHandler}>
+      <div className="card">
                 <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
-                  <div className="card-image">
+                  <div onClick={this.openModalHandler} className="card-image">
                   <img src={cocktail.img}/>
                   </div>
                   <div className="card-content">
