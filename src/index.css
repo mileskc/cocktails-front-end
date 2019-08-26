@@ -132,9 +132,18 @@ code {
   #add, #random {
     display: flex;
     margin: 15px;
+    flex-direction: row;
     justify-content: left;
   }
   
+  #left-align {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 100%;
+    margin-left:0 px auto;
+  }
+
   .submit {
     background-color: rgb(211, 212, 218);
     color: black;

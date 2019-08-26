@@ -233,7 +233,9 @@ class App extends React.Component {
       <header>
         <h1>Bar None</h1>
       </header>
+      <div id= ".left-align">
       <a className="waves-effect waves-light btn" id="add" onClick={()=> this.revealNewForm()}>Add a drink</a>
+      </div>
       {this.state.isAddButtonClicked && <NewForm 
       handleAddCocktail={this.handleAddCocktail}
       />}
