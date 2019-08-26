@@ -129,6 +129,7 @@ code {
     color: white;
   }
   
+  
   #add, #random {
     display: flex;
     margin: 15px;
@@ -143,11 +144,16 @@ code {
   }
 
   .details {
-    width: 80%;
+    width: 100%;
     background-color: rgb(243, 247, 244);
     padding: 10px;
     font-family: 'Montserrat', sans-serif;
-    flex-direction: column;
+    /* flex-direction: column; */
+  }
+
+  .modalStyling {
+    display: flex;
+    flex-wrap: wrap;
   }
 
 /* div {
