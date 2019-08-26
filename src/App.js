@@ -172,8 +172,12 @@ class App extends React.Component {
     handleChange(event) {
     this.setState({ drinkName: event.target.value })
   }
-  openModalHandler =()=>{
+  openModalHandler =(id)=>{
+    const filteredCocktails = this.state.cocktails.filter(cocktail =>{
+      return cocktail._id ===id;
+    })
     this.setState({
+      cocktails: filteredCocktails,
       isShowing: true
     })
   }
