@@ -144,6 +144,13 @@ code {
     margin-left:0 px auto;
   }
 
+  .buttons {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: left;
+    margin-left: 0 px auto;
+  }
+
   .submit {
     background-color: rgb(211, 212, 218);
     color: black;

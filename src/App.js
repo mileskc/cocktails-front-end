@@ -234,9 +234,12 @@ class App extends React.Component {
       <header>
         <h1>Bar None</h1>
       </header>
+      <div class ='buttons'>
       <div id= ".left-align">
       <a className="waves-effect waves-light btn" id="add" onClick={()=> this.revealNewForm()}>Add a drink</a>
       </div>
+      </div>
+      
       {this.state.isAddButtonClicked && <NewForm 
       handleAddCocktail={this.handleAddCocktail}
       />}
@@ -252,6 +255,7 @@ class App extends React.Component {
       </form>
       <a className="waves-effect waves-light btn" id="random" onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</a>
       <div className="row">
+      
 
       { 
             this.state.cocktails.map(cocktail => {
