@@ -8,10 +8,15 @@ class Show extends React.Component {
                 {/* <button onClick={() => this.props.hideShowCard()}>Hide Info</button> */}
                 <hr/>
                 <h4> {this.props.cocktail.name}</h4>
-                <img src={this.props.cocktail.img} alt = ''/>
-                <button onClick={() => this.props.revealFavorite(this.props.cocktail)}>Make Favorite</button>
+                <div className="showImage">
+                    <img src={this.props.cocktail.img} alt = ''/>
+                </div>
+                <div class="buttonWidth">
+                <button className="waves-effect waves-light btn" onClick={() => this.props.revealFavorite(this.props.cocktail)}>Make Favorite</button>
+                </div>
                 {
-                    this.props.cocktail.favorite ? <h6>*Favorite*</h6> : null
+                    this.props.cocktail.favorite ? 
+                    <h6 class="material-icons">star_border</h6> : null
                 }
                 <h5>{this.props.cocktail.alcoholic}</h5>
                 <h5>{this.props.cocktail.glass}</h5>

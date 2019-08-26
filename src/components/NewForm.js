@@ -82,7 +82,7 @@ if(process.env.NODE_ENV === 'development') {
                     id='ing1'
                     onChange={this.handleChange}
                     defaultValue={this.state.ing1}
-                    placeholder='what is your first ingredient'
+                    placeholder='what is your first ingredient?'
                     />
 
                     <input 
@@ -90,7 +90,7 @@ if(process.env.NODE_ENV === 'development') {
                     id='ing2'
                     onChange={this.handleChange}
                     defaultValue={this.state.ing2}
-                    placeholder='what is your second ingredient'
+                    placeholder='what is your second ingredient?'
                     />
 
                     <input 
@@ -98,7 +98,7 @@ if(process.env.NODE_ENV === 'development') {
                     id='ing3'
                     onChange={this.handleChange}
                     defaultValue={this.state.ing3}
-                    placeholder='what is your third ingredient'
+                    placeholder='what is your third ingredient?'
                     />  
 
                     <input 
@@ -106,7 +106,7 @@ if(process.env.NODE_ENV === 'development') {
                     id='instructions'
                     onChange={this.handleChange}
                     value={this.state.instructions}
-                    placeholder='How are you going to make it?'
+                    placeholder='How do you make it?'
                     />
                     <input className="waves-effect waves-light btn" type='submit'
                     value='Submit drink!'
