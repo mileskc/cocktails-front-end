@@ -3,6 +3,9 @@ import axios from 'axios'
 import './App.css';
 import NewForm from './components/NewForm';
 import Show from './components/Show';
+import Modal from './components/Modal'
+
+
 
 
 let baseURL = process.env.REACT_APP_BASEURL
@@ -21,8 +24,8 @@ class App extends React.Component {
      cocktail: {},
      isAddButtonClicked: false,
      hideShowForm: false,
-     drinkName: '',
-     ingredientSearch: ''
+     name: '',
+     isShowing: false
     }
     
     this.getCocktails = this.getCocktails.bind(this)
@@ -34,8 +37,7 @@ class App extends React.Component {
     this.revealNewForm= this.revealNewForm.bind(this)
     this.hideShowCard = this.hideShowCard.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.searchName = this.searchName.bind(this)
-    this.searchIngredient = this.searchIngredient.bind(this)
+    this.openModalHandler=this.openModalHandler.bind(this)
   }
   
   componentDidMount() {
@@ -79,8 +81,7 @@ class App extends React.Component {
     })
   }
 
-  async searchName(event){
-    event.preventDefault();
+  async handleSubmit(){
     const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${this.state.drinkName}`)
     const data = response.data
     this.setState({
@@ -111,45 +112,11 @@ class App extends React.Component {
     console.log(this.state.drinkName)
   }
 
-  async searchIngredient(event){
-    event.preventDefault();
-    const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${this.state.ingredientSearch}`)
-    const cocktailName = response.data.drinks[Math.floor(Math.random() * response.data.drinks.length)].strDrink
-    const nameResponse = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`)
-    const data = nameResponse.data
-    this.setState({
-      cocktail: {
-        name: data.drinks[0].strDrink,
-        img: data.drinks[0].strDrinkThumb,
-        alcoholic: data.drinks[0].strAlcoholic,
-        glass: data.drinks[0].strGlass,
-        ingredients: [data.drinks[0].strIngredient1,
-        data.drinks[0].strIngredient2,
-        data.drinks[0].strIngredient3,
-        data.drinks[0].strIngredient4,
-        data.drinks[0].strIngredient5,
-        data.drinks[0].strIngredient6,
-        data.drinks[0].strIngredient7,
-        data.drinks[0].strIngredient8,
-        data.drinks[0].strIngredient9,
-        data.drinks[0].strIngredient10,
-        data.drinks[0].strIngredient11,
-        data.drinks[0].strIngredient12,
-        data.drinks[0].strIngredient13,
-        data.drinks[0].strIngredient14,
-        data.drinks[0].strIngredient15],
-        instructions: data.drinks[0].strInstructions
-      },
-      isCocktailSet: true
-    })
-    console.log(this.state.ingredientSearch)
-  }
-
   getCocktail(cocktail) {
     this.setState({ 
       cocktail: cocktail ,
       isCocktailSet: true, 
-      display: 'hideFavorite',
+      display: 'hideFavorite'
     })
   }
 
@@ -179,19 +146,7 @@ class App extends React.Component {
   }
 }
 
-  revealFavorite() {
-    if (this.state.display === 'showFavorite') {
-      this.setState({
-        display: 'hideFavorite'
-      })
-    } else if (this.state.display === 'hideFavorite') {
-      this.setState({
-        display: 'showFavorite'
-      })
-      this.toggleFavorite(this.setState)
-    }
-
-  hideShowCard() 
+  hideShowCard() {
     this.setState({
         hideShowForm: true
     })
@@ -215,9 +170,16 @@ class App extends React.Component {
   }
 
     handleChange(event) {
-    this.setState({ 
-      drinkName: event.target.value, 
-      ingredientSearch: event.target.value
+    this.setState({ drinkName: event.target.value })
+  }
+  openModalHandler =()=>{
+    this.setState({
+      isShowing: true
+    })
+  }
+  closeModalHandler=()=>{
+    this.setState({
+      isShowing: false
     })
   }
 
@@ -227,31 +189,23 @@ class App extends React.Component {
       <header>
         <h1>Bar None</h1>
       </header>
-      <a className="waves-effect waves-light btn" id="add" onClick={()=> this.revealNewForm()}>Add a drink</a>
+      <button onClick={()=> this.revealNewForm()}>Add a drink</button>
       {this.state.isAddButtonClicked && <NewForm 
       handleAddCocktail={this.handleAddCocktail}
       />}
-      <form onSubmit={this.searchName}>
-      <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
-      {/* defaultValue={this.state.drinkName} */}
-      <input type='submit' className="waves-effect waves-light btn" value='search by name'></input>
+      <form onSubmit={this.handleSubmit}>
+      <input onChange={this.handleChange} type='text'id='drinkName' defaultValue={this.state.drinkName} placeholder='search for drink'></input>
+      <input onClick={() => this.handleSubmit()} type='submit' value='search by name'></input>
       </form>
-      <form onSubmit={this.searchIngredient}>
-      <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
-      {/* defaultValue={this.state.drinkName} */}
-      <input type='submit' className="waves-effect waves-light btn" value='search by ingredient'></input>
-      </form>
-      <a className="waves-effect waves-light btn" id="random" onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</a>
+      <button onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</button>
       <div className="row">
-
       { 
             this.state.cocktails.map(cocktail => {
               return (
-                <div className="col s12 m4 l3">
-      <div className="card">
+                <div className="col s12 m7 l4">
+                  { this.state.isShowing ? <div onClick={this.closeModalHandler} className="back-drop"></div> : null }
+      <div className="card" onClick={this.openModalHandler}>
                 <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
-                  <h2> {cocktail.name} </h2>
-                  <div className={cocktail.favorite ? 'favorite': null}></div>
                   <div className="card-image">
                   <img src={cocktail.img}/>
                   </div>
@@ -268,12 +222,25 @@ class App extends React.Component {
             })
           }
       </div>
+      <Modal
+       className="modal"
+       show={this.state.isShowing}
+       close={this.closeModalHandler}
+>
       <div className = "show">
-              {this.state.isCocktailSet && <Show hideShowCard={this.hideShowCard} searchName={this.searchName} getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
+              {this.state.isCocktailSet && <Show hideShowCard={this.hideShowCard} handleSubmit={this.handleSubmit} getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
               </div>
+  
+        </Modal>
     </div>
   );
 }
 }
 
 export default App;
+
+
+
+
+
+
