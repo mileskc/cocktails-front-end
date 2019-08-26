@@ -134,6 +134,7 @@ form {
   display: flex;
   margin: 15px;
   justify-content: left;
+  align-items: left;
 }
 
 .submit {
