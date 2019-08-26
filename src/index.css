@@ -35,6 +35,11 @@ display: none;
   width: 100%;
 }
 
+.favorite {
+  opacity: 0.3;
+  font-style: italic;
+}
+
 header {
   width: 100%;
   /*3 drinks*/

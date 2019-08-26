@@ -27,6 +27,7 @@ class Show extends React.Component {
                 }
                 </ul>
                 <h5>{this.props.cocktail.instructions}</h5>
+                <a href='/'>home</a>
             </div>
             
         )
