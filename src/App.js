@@ -235,6 +235,7 @@ class App extends React.Component {
         <h1>Bar None</h1>
       </header>
       <a className="waves-effect waves-light btn" id="add" onClick={()=> this.revealNewForm()}>Add a drink</a>
+      <a className="waves-effect waves-light btn" id="random" onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</a>
       {this.state.isAddButtonClicked && <NewForm 
       handleAddCocktail={this.handleAddCocktail}
       />}
@@ -248,7 +249,6 @@ class App extends React.Component {
       {/* defaultValue={this.state.drinkName} */}
       <input onClick={this.openModalHandler} type='submit' className="waves-effect waves-light btn" value='search by ingredient'></input>
       </form>
-      <a className="waves-effect waves-light btn" id="random" onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</a>
       <div className="row">
 
       { 
@@ -273,6 +273,7 @@ class App extends React.Component {
             })
           }
       </div>
+      <div className="modalStyling">
         <Modal
         searchName={this.searchName}
         searchIngredient = {this.searchIngredient}
@@ -285,6 +286,7 @@ class App extends React.Component {
               {this.state.isCocktailSet && <Show hideShowCard={this.hideShowCard} searchName={this.searchName} searchIngredient = {this.searchIngredient} getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
               </div>
     </Modal>
+    </div>
     </div>
   );
 }
