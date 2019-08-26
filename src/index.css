@@ -177,6 +177,14 @@ code {
     flex-wrap: wrap;
   }
 
+  .showImage {
+    width: 100%;
+  }
+
+  .buttonWidth {
+    width: 100%;
+  }
+
 /* div {
   display: flex;
   width:100%;
