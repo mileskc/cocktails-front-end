@@ -4,7 +4,7 @@ class Show extends React.Component {
     render() {
         return (
             <div className="details">
-                <h3>Cocktail Info</h3>
+                <h3>Cocktail Info</h3> <a href='/'>home</a>
                 {/* <button onClick={() => this.props.hideShowCard()}>Hide Info</button> */}
                 <hr/>
                 <h4> {this.props.cocktail.name}</h4>
@@ -26,7 +26,8 @@ class Show extends React.Component {
                 })
                 }
                 </ul>
-                <h5>{this.props.cocktail.instructions}</h5>
+                <h5>Instructions:</h5>
+                <p>{this.props.cocktail.instructions}</p>
                 <a href='/'>home</a>
             </div>
             

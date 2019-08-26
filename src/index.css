@@ -142,3 +142,15 @@ code {
     font-size: 12px;
   }
 
+  .details {
+    width: 80%;
+    background-color: rgb(243, 247, 244);
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    flex-direction: column;
+  }
+
+/* div {
+  display: flex;
+  width:100%;
+} */
