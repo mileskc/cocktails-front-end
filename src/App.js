@@ -234,12 +234,8 @@ class App extends React.Component {
       <header>
         <h1>Bar None</h1>
       </header>
-      <div class ='buttons'>
-      <div id= ".left-align">
       <a className="waves-effect waves-light btn" id="add" onClick={()=> this.revealNewForm()}>Add a drink</a>
-      </div>
-      </div>
-      
+      <a className="waves-effect waves-light btn" id="random" onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</a>
       {this.state.isAddButtonClicked && <NewForm 
       handleAddCocktail={this.handleAddCocktail}
       />}
@@ -253,7 +249,6 @@ class App extends React.Component {
       {/* defaultValue={this.state.drinkName} */}
       <input onClick={this.openModalHandler} type='submit' className="waves-effect waves-light btn" value='search by ingredient'></input>
       </form>
-      <a className="waves-effect waves-light btn" id="random" onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</a>
       <div className="row">
       
 
@@ -261,9 +256,9 @@ class App extends React.Component {
             this.state.cocktails.map(cocktail => {
               return (
                 <div className="col s12 m4 l3">
-      <div className="card" onClick={this.openModalHandler}>
+      <div className="card">
                 <div key={cocktail._id} onClick={()=> this.getCocktail(cocktail)} className = "drink">
-                  <div className="card-image">
+                  <div onClick={this.openModalHandler} className="card-image">
                   <img src={cocktail.img}/>
                   </div>
                   <div className="card-content">
@@ -279,6 +274,7 @@ class App extends React.Component {
             })
           }
       </div>
+      <div className="modalStyling">
         <Modal
         searchName={this.searchName}
         searchIngredient = {this.searchIngredient}
@@ -291,6 +287,7 @@ class App extends React.Component {
               {this.state.isCocktailSet && <Show hideShowCard={this.hideShowCard} searchName={this.searchName} searchIngredient = {this.searchIngredient} getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
               </div>
     </Modal>
+    </div>
     </div>
   );
 }
