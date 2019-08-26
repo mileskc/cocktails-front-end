@@ -80,6 +80,7 @@ class App extends React.Component {
       },
       isCocktailSet: true
     })
+    this.openModalHandler()
   }
 
   async searchName(event){
@@ -218,7 +219,7 @@ class App extends React.Component {
     })
     this.setState({
       cocktails: filteredCocktails,
-      isShowing: true
+      isShowing: true,
     })
   }
   closeModalHandler=()=>{
@@ -242,12 +243,12 @@ class App extends React.Component {
       <form onSubmit={this.searchName}>
       <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
       {/* defaultValue={this.state.drinkName} */}
-      <input type='submit' className="waves-effect waves-light btn" value='search by name'></input>
+      <input onClick={this.openModalHandler} type='submit' className="waves-effect waves-light btn" value='search by name'></input>
       </form>
       <form onSubmit={this.searchIngredient}>
       <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
       {/* defaultValue={this.state.drinkName} */}
-      <input type='submit' className="waves-effect waves-light btn" value='search by ingredient'></input>
+      <input onClick={this.openModalHandler} type='submit' className="waves-effect waves-light btn" value='search by ingredient'></input>
       </form>
       <a className="waves-effect waves-light btn" id="random" onClick={()=> this.getRandomCocktail()}>Give me a random cocktail!</a>
       <div className="row">
@@ -275,13 +276,15 @@ class App extends React.Component {
           }
       </div>
         <Modal
+        searchName={this.searchName}
+        searchIngredient = {this.searchIngredient}
         className="modal"
         show={this.state.isShowing}
         close={this.closeModalHandler}
         >
 
       <div className = "show">
-              {this.state.isCocktailSet && <Show hideShowCard={this.hideShowCard} searchName={this.searchName} getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
+              {this.state.isCocktailSet && <Show hideShowCard={this.hideShowCard} searchName={this.searchName} searchIngredient = {this.searchIngredient} getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
               </div>
     </Modal>
     </div>
