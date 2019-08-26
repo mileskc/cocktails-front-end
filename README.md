@@ -18,7 +18,7 @@ An application that allows users to search through popular cocktails and click o
 
 ## CRUD
 
-### Created 7 RESTful Routes
+## Created 7 RESTful Routes:
 * Index
 * Show
 * New
@@ -27,4 +27,9 @@ An application that allows users to search through popular cocktails and click o
 * Update
 * Delete
 
-## Approach Taken
+## Approach Taken:
+
+## Screen shots of App:
+* 
+* 
+* 
