@@ -78,6 +78,10 @@ if(process.env.NODE_ENV === 'development') {
                     value={this.state.ingredients}
                     placeholder='what is your first ingredient'
                     />
+
+
+
+
                     <input 
                     type='text'
                     id='instructions'
