@@ -40,4 +40,6 @@ In addition to the information in the database, Bar None accesses a 3rd party AP
 
 ## Screen shots of App:
 ![Site Screenshot 1](https://github.com/mileskc/cocktails-front-end/blob/master/images/Bar%20None%20Screenshot.png)
+![Site Screenshot 2](https://github.com/mileskc/cocktails-front-end/blob/master/images/Bar%20None%20Screenshot%202.png)
+
 
