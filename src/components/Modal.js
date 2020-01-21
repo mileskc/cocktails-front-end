@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const modal = (props) => {
     return (
-        <div>
+        <div className = "modal-component">
             <div className="modal-wrapper"
                 style={{
                     transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',

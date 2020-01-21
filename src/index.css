@@ -124,6 +124,10 @@ code {
     width: 100%;
   }
   
+  .favoritesHeader {
+    font-size: 40px;
+  }
+
   .btn {
     /* background-color: rgb(110, 128, 161); */
     background-color: rgb(211, 212, 218);
@@ -168,25 +172,62 @@ code {
   }
 
   .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     background-color: rgb(243, 247, 244);
     padding: 10px;
     font-family: 'Montserrat', sans-serif;
+    border: 1px solid gray;
     /* flex-direction: column; */
+  }
+
+  .modal-component {
+    width: 70%;
+   
+    /* display: flex;
+    justify-content: center; */
   }
 
   .modalStyling {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
   }
 
   .showImage {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
   }
 
   .buttonWidth {
     width: 100%;
+    display: flex;
+    justify-content: center;
   }
+
+  /* modal */
+
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .instructions {
+    width: 70%;
+    text-align: center;
+  }
+
+  /* .row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  } */
 
 /* div {
   display: flex;

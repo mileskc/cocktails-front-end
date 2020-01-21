@@ -11,9 +11,20 @@ class Show extends React.Component {
                 <div className="showImage">
                     <img src={this.props.cocktail.img} alt = ''/>
                 </div>
-                <div class="buttonWidth">
-                <button className="waves-effect waves-light btn" onClick={() => this.props.revealFavorite(this.props.cocktail)}>Make Favorite</button>
-                </div>
+
+                {console.log(this.props.cocktail.isSeed)}
+
+                {/* {this.props.cocktail.isSeed ?
+                    // <div class="buttonWidth">
+                    <button className="waves-effect waves-light btn" onClick={() => this.props.revealFavorite(this.props.cocktail)}>Favorite/Unfavorite</button>
+                    // </div>
+                    : null
+                } */}
+
+                    <div class="buttonWidth">
+                    <button className="waves-effect waves-light btn" onClick={() => this.props.revealFavorite(this.props.cocktail)}>Favorite/Unfavorite</button>
+                    </div>
+                
                 {
                     this.props.cocktail.favorite ? 
                     <h6 class="material-icons">star_border</h6> : null
@@ -32,7 +43,7 @@ class Show extends React.Component {
                 }
                 </ul>
                 <h5>Instructions:</h5>
-                <p>{this.props.cocktail.instructions}</p>
+                <p className = "instructions">{this.props.cocktail.instructions}</p>
                 <a href='/'>home</a>
             </div>
             
