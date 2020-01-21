@@ -10,7 +10,7 @@ let baseURL = process.env.REACT_APP_BASEURL
 
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
-} ELSE {
+} else {
   baseURL = 'https://cryptic-chamber-65846.herokuapp.com'
 }
 
