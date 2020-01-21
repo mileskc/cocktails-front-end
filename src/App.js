@@ -30,7 +30,7 @@ class App extends React.Component {
      drinkName: '',
      ingredientSearch: '',
      isShowing: false,
-     isSeed: true
+     
     }
     
     this.getCocktails = this.getCocktails.bind(this)
@@ -55,7 +55,9 @@ class App extends React.Component {
     const response = await axios.get(`${baseURL}/cocktails`)
     const cocktails = response.data
     
-    this.setState({ cocktails: cocktails })
+    this.setState({ 
+      cocktails: cocktails,
+    })
   }
 
   async getRandomCocktail(){
@@ -82,10 +84,10 @@ class App extends React.Component {
         data.drinks[0].strIngredient13,
         data.drinks[0].strIngredient14,
         data.drinks[0].strIngredient15],
-        instructions: data.drinks[0].strInstructions
+        instructions: data.drinks[0].strInstructions,
+        isSeed: false
       },
       isCocktailSet: true,
-      isSeed: false
     })
     this.openModalHandler()
   }
@@ -115,10 +117,11 @@ class App extends React.Component {
         data.drinks[0].strIngredient13,
         data.drinks[0].strIngredient14,
         data.drinks[0].strIngredient15],
-        instructions: data.drinks[0].strInstructions
+        instructions: data.drinks[0].strInstructions,
+        isSeed: false
       },
       isCocktailSet: true,
-      isSeed: false
+      
     })
     console.log(this.state.drinkName)
   }
@@ -150,17 +153,18 @@ class App extends React.Component {
         data.drinks[0].strIngredient13,
         data.drinks[0].strIngredient14,
         data.drinks[0].strIngredient15],
-        instructions: data.drinks[0].strInstructions
+        instructions: data.drinks[0].strInstructions,
+        isSeed: false
       },
-      isCocktailSet: true,
-      isSeed: false
+      isCocktailSet: true
+      
     })
     console.log(this.state.ingredientSearch)
   }
 
   getCocktail(cocktail) {
     this.setState({ 
-      cocktail: cocktail ,
+      cocktail: cocktail,
       isCocktailSet: true, 
       display: 'hideFavorite'
     })
@@ -201,7 +205,7 @@ class App extends React.Component {
   handleAddCocktail(cocktail) {
     this.setState({
       cocktails: [...this.state.cocktails, cocktail],
-      isSeed:true
+      // isSeed:true
     })
   }
 
@@ -304,6 +308,7 @@ class App extends React.Component {
 
       <div className = "show">
         {this.state.isCocktailSet && <Show hideShowCard={this.hideShowCard} searchName={this.searchName} searchIngredient = {this.searchIngredient} getRandomCocktail={this.getRandomCocktail} display={this.state.display} revealFavorite={this.revealFavorite} cocktail ={this.state.cocktail}/>}
+        
       </div>
     </Modal>
     </div>

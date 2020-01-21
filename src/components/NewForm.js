@@ -41,7 +41,8 @@ if(process.env.NODE_ENV === 'development') {
                 alcoholic: this.state.alcoholic,
                 glass: this.state.glass,
                 ingredients: allIngredients,
-                instructions: this.state.instructions
+                instructions: this.state.instructions,
+                favorite: false
             })
             this.props.handleAddCocktail(response.data);
         }

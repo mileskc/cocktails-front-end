@@ -14,16 +14,22 @@ class Show extends React.Component {
 
                 {console.log(this.props.cocktail.isSeed)}
 
-                {/* {this.props.cocktail.isSeed ?
-                    // <div class="buttonWidth">
-                    <button className="waves-effect waves-light btn" onClick={() => this.props.revealFavorite(this.props.cocktail)}>Favorite/Unfavorite</button>
-                    // </div>
-                    : null
-                } */}
-
+                {this.props.cocktail.favorite === true ?
                     <div class="buttonWidth">
-                    <button className="waves-effect waves-light btn" onClick={() => this.props.revealFavorite(this.props.cocktail)}>Favorite/Unfavorite</button>
+                        <button className="waves-effect waves-light btn" onClick={() => this.props.revealFavorite(this.props.cocktail)}>Favorite/Unfavorite</button>
                     </div>
+                    : null
+                }
+                {this.props.cocktail.favorite === false ?
+                    <div class="buttonWidth">
+                        <button className="waves-effect waves-light btn" onClick={() => this.props.revealFavorite(this.props.cocktail)}>Favorite/Unfavorite</button>
+                    </div>
+                    : null
+                }
+
+                    {/* <div class="buttonWidth">
+                    <button className="waves-effect waves-light btn" onClick={() => this.props.revealFavorite(this.props.cocktail)}>Star/Unstar</button>
+                    </div> */}
                 
                 {
                     this.props.cocktail.favorite ? 
