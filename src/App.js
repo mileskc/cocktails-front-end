@@ -29,7 +29,8 @@ class App extends React.Component {
      hideShowForm: false,
      drinkName: '',
      ingredientSearch: '',
-     isShowing: false
+     isShowing: false,
+     isSeed: true
     }
     
     this.getCocktails = this.getCocktails.bind(this)
@@ -83,7 +84,8 @@ class App extends React.Component {
         data.drinks[0].strIngredient15],
         instructions: data.drinks[0].strInstructions
       },
-      isCocktailSet: true
+      isCocktailSet: true,
+      isSeed: false
     })
     this.openModalHandler()
   }
@@ -115,7 +117,8 @@ class App extends React.Component {
         data.drinks[0].strIngredient15],
         instructions: data.drinks[0].strInstructions
       },
-      isCocktailSet: true
+      isCocktailSet: true,
+      isSeed: false
     })
     console.log(this.state.drinkName)
   }
@@ -149,7 +152,8 @@ class App extends React.Component {
         data.drinks[0].strIngredient15],
         instructions: data.drinks[0].strInstructions
       },
-      isCocktailSet: true
+      isCocktailSet: true,
+      isSeed: false
     })
     console.log(this.state.ingredientSearch)
   }
@@ -196,7 +200,8 @@ class App extends React.Component {
 
   handleAddCocktail(cocktail) {
     this.setState({
-      cocktails: [...this.state.cocktails, cocktail]
+      cocktails: [...this.state.cocktails, cocktail],
+      isSeed:true
     })
   }
 
@@ -257,6 +262,8 @@ class App extends React.Component {
       {/* defaultValue={this.state.drinkName} */}
         <input onClick={this.openModalHandler} type='submit' className="waves-effect waves-light btn" value='search by ingredient'></input>
       </form>
+
+      <h1 className = "favoritesHeader">Favorites</h1>
       
       <div className="row">
       
