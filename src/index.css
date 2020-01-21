@@ -137,6 +137,7 @@ code {
     color: black;
     border: 1px solid gray;
     font-size: 12px;
+    /* margin: 5px; */
   }
   
   .btn:hover {
@@ -205,7 +206,7 @@ code {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 8px;
+    margin-bottom: 20px;
   }
 
   .buttonWidth {
@@ -224,6 +225,23 @@ code {
   .instructions {
     width: 70%;
     text-align: center;
+  }
+
+  .homeLink {
+    font-size: 20px;
+    color: black;
+    margin-top: 20px;
+  }
+
+  .homeLink:hover {
+    color: gray;
+  }
+
+  .xLink {
+    font-size: 30px;
+    color: black;
+    text-align: right;
+    width: 100%;
   }
 
   /* .row {
