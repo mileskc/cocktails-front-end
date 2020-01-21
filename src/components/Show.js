@@ -28,6 +28,13 @@ class Show extends React.Component {
                     : null
                 }
 
+            {this.props.cocktail.name === "Shirley Temple" || this.props.cocktail.name === "Martini" ?
+                    <div class="buttonWidth">
+                        <button className="waves-effect waves-light btn" onClick={() => this.props.revealFavorite(this.props.cocktail)}>Star/Unstar</button>
+                    </div>
+                    : null
+                }
+
                     {/* <div class="buttonWidth">
                     <button className="waves-effect waves-light btn" onClick={() => this.props.revealFavorite(this.props.cocktail)}>Star/Unstar</button>
                     </div> */}
