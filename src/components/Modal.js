@@ -16,10 +16,6 @@ const modal = (props) => {
                         {props.children}
                     </p>
                 </div>
-                {/* <div className="modal-footer">
-                    <button className="btn-cancel" onClick={props.close}>CLOSE</button>
-                    <button className="btn-continue">CONTINUE</button>
-                </div> */}
             </div>
         </div>
     )

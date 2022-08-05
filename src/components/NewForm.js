@@ -7,7 +7,7 @@ let baseURL = process.env.REACT_APP_BASEURL;
 if(process.env.NODE_ENV === 'development') {
     baseURL = 'http://localhost:3003';
 } else {
-    baseURL = 'https://cryptic-chamber-65846.herokuapp.com';
+    baseURL = 'https://bar-none-backend.herokuapp.com/';
 }
 
     class NewForm extends Component {

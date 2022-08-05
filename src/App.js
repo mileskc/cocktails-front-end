@@ -11,11 +11,9 @@ let baseURL = process.env.REACT_APP_BASEURL
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
 } else {
-  baseURL = 'https://cryptic-chamber-65846.herokuapp.com'
+  baseURL = 'https://bar-none-backend.herokuapp.com/'
 }
 
-
-//https://cryptic-chamber-65846.herokuapp.com/cocktails
 
 class App extends React.Component {
   constructor(props) {
@@ -123,7 +121,6 @@ class App extends React.Component {
       isCocktailSet: true,
       
     })
-    console.log(this.state.drinkName)
   }
 
   async searchIngredient(event){
@@ -159,7 +156,6 @@ class App extends React.Component {
       isCocktailSet: true
       
     })
-    console.log(this.state.ingredientSearch)
   }
 
   getCocktail(cocktail) {
@@ -177,7 +173,6 @@ class App extends React.Component {
     } else {
       copyCocktail.favorite = true
     }
-    console.log(`${baseURL}/cocktails/${cocktail._id}`);
     await axios.put(`${baseURL}/cocktails/${cocktail._id}`, copyCocktail)
     this.setState({
       cocktail: copyCocktail
@@ -205,7 +200,6 @@ class App extends React.Component {
   handleAddCocktail(cocktail) {
     this.setState({
       cocktails: [...this.state.cocktails, cocktail],
-      // isSeed:true
     })
   }
 
@@ -258,12 +252,10 @@ class App extends React.Component {
 
       <form onSubmit={this.searchName}>
         <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
-      {/* defaultValue={this.state.drinkName} */}
         <input onClick={this.openModalHandler} type='submit' className="waves-effect waves-light btn" value='search by name'></input>
       </form>
       <form onSubmit={this.searchIngredient}>
         <input onChange={this.handleChange} type='text'id='drinkName' placeholder='search for drink'></input>
-      {/* defaultValue={this.state.drinkName} */}
         <input onClick={this.openModalHandler} type='submit' className="waves-effect waves-light btn" value='search by ingredient'></input>
       </form>
 

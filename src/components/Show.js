@@ -6,14 +6,11 @@ class Show extends React.Component {
             <div className="details">
                 <a className = "xLink" href='/'>X</a>
                 <h3>Cocktail Info</h3> 
-                {/* <button onClick={() => this.props.hideShowCard()}>Hide Info</button> */}
                 <hr/>
                 <h4> {this.props.cocktail.name}</h4>
                 <div className="showImage">
                     <img src={this.props.cocktail.img} alt = ''/>
                 </div>
-
-                {console.log(this.props.cocktail.isSeed)}
 
                 {this.props.cocktail.favorite === true ?
                     <div class="buttonWidth">
@@ -27,17 +24,6 @@ class Show extends React.Component {
                     </div>
                     : null
                 }
-
-            {this.props.cocktail.name === "Shirley Temple" || this.props.cocktail.name === "Martini" ?
-                    <div class="buttonWidth">
-                        <button className="waves-effect waves-light btn" onClick={() => this.props.revealFavorite(this.props.cocktail)}>Star/Unstar</button>
-                    </div>
-                    : null
-                }
-
-                    {/* <div class="buttonWidth">
-                    <button className="waves-effect waves-light btn" onClick={() => this.props.revealFavorite(this.props.cocktail)}>Star/Unstar</button>
-                    </div> */}
                 
                 {
                     this.props.cocktail.favorite ? 
